@@ -8,15 +8,17 @@ import {Dialogs} from "./components/Dialogs/Dialogs";
 import {News} from "./components/News/News";
 import {Audio} from "./components/Audio/Audio";
 import {Settings} from "./components/Settings/Settings";
-import {StoreType} from "./redux/state";
+import {rootReducerType} from "./redux/redux-store";
+import {ActionsTypesForProfile} from "./redux/ProfileReducer/ProfileReducer";
+import {ActionsTypesForDialogs} from "./redux/DialogsReducer/DialogsReducer";
 
 
 type AppPropsType = {
-    store: StoreType
+    store: rootReducerType
+    dispatch: (action: ActionsTypesForProfile | ActionsTypesForDialogs) => void
 }
 
-const App: React.FC<AppPropsType> = ({store}) => {
-    const state = store.getState();
+const App = (props: AppPropsType) => {
 
     return (
         <div className={'appWrapper'}>
@@ -24,12 +26,12 @@ const App: React.FC<AppPropsType> = ({store}) => {
             <Sidebar/>
             <div className={'appWrapperContent'}>
                 <Route path={'/profile'} render={() => <Profile
-                    profilePage={state.profilePage}
-                    dispatch={store.dispatch.bind(store)}
+                    profilePage={props.store.profilePage}
+                    dispatch={props.dispatch}
                 />}/>
                 <Route path={'/dialogs'} render={() => <Dialogs
-                    messagesPage={state.messagesPage}
-                    dispatch={store.dispatch.bind(store)}
+                    messagesPage={props.store.messagesPage}
+                    dispatch={props.dispatch}
                 />}/>
                 <Route path={'/news'} render={() => <News/>}/>
                 <Route path={'/audio'} render={() => <Audio/>}/>
