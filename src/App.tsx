@@ -11,6 +11,7 @@ import {Settings} from "./components/Settings/Settings";
 import {rootReducerType} from "./redux/redux-store";
 import {ActionsTypesForProfile} from "./redux/ProfileReducer/ProfileReducer";
 import {ActionsTypesForDialogs} from "./redux/DialogsReducer/DialogsReducer";
+import {DialogsContainer} from "./components/Dialogs/DialogsContainer";
 
 
 type AppPropsType = {
@@ -19,7 +20,6 @@ type AppPropsType = {
 }
 
 const App = (props: AppPropsType) => {
-
     return (
         <div className={'appWrapper'}>
             <Header/>
@@ -29,7 +29,7 @@ const App = (props: AppPropsType) => {
                     profilePage={props.store.profilePage}
                     dispatch={props.dispatch}
                 />}/>
-                <Route path={'/dialogs'} render={() => <Dialogs
+                <Route path={'/dialogs'} render={() => <DialogsContainer
                     messagesPage={props.store.messagesPage}
                     dispatch={props.dispatch}
                 />}/>

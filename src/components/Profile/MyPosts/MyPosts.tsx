@@ -1,29 +1,26 @@
 import React, {ChangeEvent} from "react";
 import s from './MyPosts.module.css';
 import {Post} from "./Post/Post";
-import {
-    ActionsTypesForProfile,
-    addPostAC,
-    changeTextForInputAC,
-    ProfilePageType
-} from "../../../redux/ProfileReducer/ProfileReducer";
+import {PostsDataType} from "../../../redux/ProfileReducer/ProfileReducer";
+
 
 
 type MyPostsPropsType = {
-    profilePage: ProfilePageType
-    dispatch: (action: ActionsTypesForProfile) => void
+    postsData: Array<PostsDataType>
+    newPostText: string
+    changeTextForInput: (newPostText: string) => void
+    addPost: () => void
 }
 
 export const MyPosts = (props: MyPostsPropsType) => {
-    let postText = props.profilePage.newPostText;
-    let postsData = props.profilePage.postsData;
 
     const addPostHandler = () => {
-        props.dispatch(addPostAC());
+        props.addPost();
     }
 
     const changeTextForPostHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
-        props.dispatch(changeTextForInputAC(e.currentTarget.value));
+        const newPostText = e.currentTarget.value;
+        props.changeTextForInput(newPostText);
     }
 
     return (
@@ -31,7 +28,7 @@ export const MyPosts = (props: MyPostsPropsType) => {
             My posts
             <div>
                 <textarea
-                    value={postText}
+                    value={props.newPostText}
                     placeholder={'Enter text'}
                     onChange={changeTextForPostHandler}
                 />
@@ -39,7 +36,7 @@ export const MyPosts = (props: MyPostsPropsType) => {
             </div>
             <div className={s.posts_wrapper}>
                 {
-                    postsData.map(p => {
+                    props.postsData.map(p => {
                         return (
                             <Post id={p.id} message={p.text} likesCount={p.likesCount}/>
                         );

@@ -16,7 +16,6 @@ const renderTree = (state: rootReducerType) => {
         document.getElementById('root')
     );
 }
-
 renderTree(store.getState());
 
 store.subscribe(() => {

@@ -1,8 +1,8 @@
 import React from "react";
 import s from './Profile.module.css';
-import {MyPosts} from "./MyPosts/MyPosts";
 import {ProfileInfo} from "./ProfileInfo/ProfileInfo";
 import {ActionsTypesForProfile, ProfilePageType} from "../../redux/ProfileReducer/ProfileReducer";
+import {MyPostsContainer} from "./MyPosts/MyPostsContainer";
 
 
 export type ProfilePropsType = {
@@ -17,7 +17,7 @@ export const Profile = (props: ProfilePropsType) => {
                 <img src="https://112slov.ru/wp-content/uploads/sites/6/2019/01/AdobeStock_178545270-1200x385.jpeg" alt="main-images"/>
             </div>
             <ProfileInfo/>
-            <MyPosts
+            <MyPostsContainer
                 profilePage={props.profilePage}
                 dispatch={props.dispatch}
             />

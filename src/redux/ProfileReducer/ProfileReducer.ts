@@ -1,7 +1,7 @@
 export type ActionsTypesForProfile = ReturnType<typeof addPostAC>
     | ReturnType<typeof changeTextForInputAC>
 
-type PostsDataType = {id: string, text: string, likesCount: number}
+export type PostsDataType = {id: string, text: string, likesCount: number}
 export type ProfilePageType = {
     postsData: Array<PostsDataType>
     newPostText: string
