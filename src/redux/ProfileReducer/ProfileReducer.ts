@@ -1,31 +1,31 @@
 export type ActionsTypesForProfile = ReturnType<typeof addPostAC>
     | ReturnType<typeof changeTextForInputAC>
 
-export type PostsDataType = {id: string, text: string, likesCount: number}
-export type ProfilePageType = {
-    postsData: Array<PostsDataType>
-    newPostText: string
-}
+type PostsDataType = { id: string, text: string, likesCount: number }
 
-let initialState: ProfilePageType = {
+let initialState = {
     postsData: [
         {id: '1', text: 'Hi, how are you?', likesCount: 11},
         {id: '2', text: 'It\'s my first post', likesCount: 15},
-    ],
+    ] as Array<PostsDataType>,
     newPostText: '',
 };
 
-export const ProfileReducer = (state = initialState, action: ActionsTypesForProfile) => {
+export type InitialProfileType = typeof initialState;
+
+export const ProfileReducer = (state: InitialProfileType = initialState, action: ActionsTypesForProfile): InitialProfileType => {
     switch (action.type) {
         case 'ADD-POST': {
-            const newPost: PostsDataType = {id: '5', text: state.newPostText, likesCount: 0};
-            state.postsData.push(newPost);
-            state.newPostText = '';
-            return state;
+            const newPost: PostsDataType = {id: '3', text: state.newPostText, likesCount: 0};
+            return {
+                ...state,
+                postsData: [...state.postsData, newPost],
+                newPostText: ''
+            };
         }
         case 'CHANGE-TEXT-INPUT': {
-            state.newPostText = action.newPostText;
-            return state;
+            debugger
+            return {...state, newPostText: action.newPostText};
         }
         default: {
             return state;

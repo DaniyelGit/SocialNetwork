@@ -1,36 +1,38 @@
 import React from "react";
 import {
-    ActionsTypesForProfile,
     addPostAC,
-    changeTextForInputAC,
-    ProfilePageType
+    changeTextForInputAC, InitialProfileType,
 } from "../../../redux/ProfileReducer/ProfileReducer";
 import {MyPosts} from "./MyPosts";
+import {connect} from "react-redux";
+import {Dispatch} from "redux";
 
 
-type MyPostsPropsContainerType = {
-    profilePage: ProfilePageType
-    dispatch: (action: ActionsTypesForProfile) => void
+export type MyPostsContainerPropsType = mapDispatchToPropsType & mapStateToPropsType;
+
+
+type mapDispatchToPropsType = {
+    addPost: () => void
+    changeTextForInput: (newPostText: string) => void
+}
+const mapDispatchToProps = (dispatch: Dispatch): mapDispatchToPropsType => {
+    return {
+        addPost: () => {
+            dispatch(addPostAC())
+        },
+        changeTextForInput: (newPostText: string) => {
+            dispatch(changeTextForInputAC(newPostText))
+        }
+    }
 }
 
-export const MyPostsContainer = (props: MyPostsPropsContainerType) => {
-
-    let postsData = props.profilePage.postsData;
-    let newPostText = props.profilePage.newPostText;
-
-    const addPost = () => {
-        props.dispatch(addPostAC());
-    }
-
-    const changeTextForInput = (newPostText: string) => {
-        props.dispatch(changeTextForInputAC(newPostText));
-    }
-
-    return (
-        <MyPosts changeTextForInput={changeTextForInput}
-                 addPost={addPost}
-                 postsData={postsData}
-                 newPostText={newPostText}
-        />
-    );
+type mapStateToPropsType = {
+    profilePage: InitialProfileType
 }
+const mapStateToProps = (state: mapStateToPropsType): mapStateToPropsType => {
+    return {
+        profilePage: state.profilePage
+    }
+}
+
+export const MyPostsContainer = connect (mapStateToProps ,mapDispatchToProps) (MyPosts);

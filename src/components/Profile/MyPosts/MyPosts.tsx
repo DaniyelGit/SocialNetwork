@@ -1,21 +1,13 @@
 import React, {ChangeEvent} from "react";
 import s from './MyPosts.module.css';
 import {Post} from "./Post/Post";
-import {PostsDataType} from "../../../redux/ProfileReducer/ProfileReducer";
+import {MyPostsContainerPropsType} from "./MyPostsContainer";
 
 
-
-type MyPostsPropsType = {
-    postsData: Array<PostsDataType>
-    newPostText: string
-    changeTextForInput: (newPostText: string) => void
-    addPost: () => void
-}
-
-export const MyPosts = (props: MyPostsPropsType) => {
+export const MyPosts = (props: MyPostsContainerPropsType) => {
 
     const addPostHandler = () => {
-        props.addPost();
+       props.addPost()
     }
 
     const changeTextForPostHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
@@ -28,7 +20,7 @@ export const MyPosts = (props: MyPostsPropsType) => {
             My posts
             <div>
                 <textarea
-                    value={props.newPostText}
+                    value={props.profilePage.newPostText}
                     placeholder={'Enter text'}
                     onChange={changeTextForPostHandler}
                 />
@@ -36,7 +28,7 @@ export const MyPosts = (props: MyPostsPropsType) => {
             </div>
             <div className={s.posts_wrapper}>
                 {
-                    props.postsData.map(p => {
+                    props.profilePage.postsData.map(p => {
                         return (
                             <Post id={p.id} message={p.text} likesCount={p.likesCount}/>
                         );
