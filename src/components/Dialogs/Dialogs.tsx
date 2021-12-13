@@ -19,7 +19,7 @@ export const Dialogs = (props: DialogsPropsType) => {
         <div className={s.dialogs}>
             <div className={s.dialogsItems}>
                 {
-                   props.messagePage.dialogsData.map(d => {
+                   props.dialogsData.map(d => {
                         return (
                             <DialogItem name={d.name} id={d.id}/>
                         );
@@ -28,7 +28,7 @@ export const Dialogs = (props: DialogsPropsType) => {
             </div>
             <div className={s.messages}>
                 {
-                    props.messagePage.messagesData.map(m => {
+                    props.messageData.map(m => {
                         return (
                             <Message message={m.message} id={m.id}/>
                         );
@@ -37,7 +37,7 @@ export const Dialogs = (props: DialogsPropsType) => {
                 <div>
                     <div>
                       <textarea
-                          value={props.messagePage.newMessageText}
+                          value={props.newMessageText}
                           placeholder={'Enter your message'}
                           onChange={onChangeMessageTextHandler}
                       />

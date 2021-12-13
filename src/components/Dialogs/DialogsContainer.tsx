@@ -1,7 +1,8 @@
 import React, {ChangeEvent} from "react";
 import s from './Dialogs.module.css';
 import {
-    InitialStateType,
+    DialogsDataType,
+    MessagesDataType,
     sendMessageAC,
     updateNewMessageTextAC
 } from "../../redux/DialogsReducer/MessagesReducer";
@@ -15,11 +16,15 @@ export type DialogsPropsType = MapStateToPropsType & MapDispatchPropsType
 
 
 type MapStateToPropsType = {
-    messagePage: InitialStateType
+    messageData: Array<MessagesDataType>
+    dialogsData: Array<DialogsDataType>
+    newMessageText: string
 }
 let mapStateToProps = (state: RootStateType): MapStateToPropsType => {
     return {
-        messagePage: state.messagesPage,
+        messageData: state.messagesPage.messagesData,
+        dialogsData: state.messagesPage.dialogsData,
+        newMessageText: state.messagesPage.newMessageText
     };
 }
 
@@ -38,4 +43,4 @@ let mapDispatchToProps = (dispatch: Dispatch): MapDispatchPropsType => {
     };
 }
 
-export const DialogsContainer = connect(mapStateToProps, mapDispatchToProps) (Dialogs);
+export const DialogsContainer = connect(mapStateToProps, mapDispatchToProps)(Dialogs);

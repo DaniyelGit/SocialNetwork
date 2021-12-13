@@ -27,6 +27,11 @@ export const Sidebar = () => {
                     </NavLink>
                 </li>
                 <li className={s.item}>
+                    <NavLink className={s.link} activeClassName={s.link_active} to={'/users'}>
+                        Users
+                    </NavLink>
+                </li>
+                <li className={s.item}>
                     <NavLink className={s.link} activeClassName={s.link_active} to={'/settings'}>
                         Settings
                     </NavLink>
