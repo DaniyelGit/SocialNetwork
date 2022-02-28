@@ -24,7 +24,6 @@ export const ProfileReducer = (state: InitialProfileType = initialState, action:
             };
         }
         case 'CHANGE-TEXT-INPUT': {
-            debugger
             return {...state, newPostText: action.newPostText};
         }
         default: {
