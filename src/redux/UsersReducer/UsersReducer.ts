@@ -4,13 +4,16 @@ type ActionsTypesForDialogs = ReturnType<typeof followedAC>
 
 
 export type UserType = {
-    id: string, photoUrl: string, followed: boolean, fullName: string, status: string, location: {city: string, country: string}
+    id: string,
+    photoUrl: string,
+    followed: boolean,
+    fullName: string,
+    status: string,
+    location: { city: string, country: string }
 }
 
 let initialState = {
-    users: [
-
-    ] as Array<UserType>
+    users: [] as Array<UserType>
 }
 
 export type initialUsersType = typeof initialState;
@@ -47,7 +50,7 @@ export const unFollowedAC = (idUser: string) => {
     } as const
 }
 
-export const setUsersAC = (users: any) => {
+export const setUsersAC = (users: UserType[]) => {
     return {
         type: 'SET_USERS',
         users

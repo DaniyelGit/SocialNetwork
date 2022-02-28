@@ -15,22 +15,24 @@ export const Dialogs = (props: DialogsPropsType) => {
         props.onSendMessageClick();
     }
 
+
+
     return (
         <div className={s.dialogs}>
             <div className={s.dialogsItems}>
                 {
-                   props.dialogsData.map(d => {
+                   props.dialogsData.map((d, index) => {
                         return (
-                            <DialogItem name={d.name} id={d.id}/>
+                            <DialogItem key={`${d}_${index}`} name={d.name} id={d.id}/>
                         );
                     })
                 }
             </div>
             <div className={s.messages}>
                 {
-                    props.messageData.map(m => {
+                    props.messageData.map((m, index) => {
                         return (
-                            <Message message={m.message} id={m.id}/>
+                            <Message key={`${m}_${index}`} message={m.message} id={m.id}/>
                         );
                     })
                 }

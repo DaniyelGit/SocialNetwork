@@ -18,7 +18,7 @@ const App = () => {
             <Header/>
             <Sidebar/>
             <div className={'appWrapperContent'}>
-                <Route path={'/profile'} render={() => <Profile/>}/>
+                <Route path={'/profile'}  render={() => <Profile/>}/>
                 <Route path={'/dialogs'} render={() => <DialogsContainer/>}/>
                 <Route path={'/news'} render={() => <News/>}/>
                 <Route path={'/audio'} render={() => <Audio/>}/>

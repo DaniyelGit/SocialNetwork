@@ -1,5 +1,4 @@
-import React, {ChangeEvent} from "react";
-import s from './Dialogs.module.css';
+import React from "react";
 import {
     DialogsDataType,
     MessagesDataType,
@@ -24,7 +23,7 @@ let mapStateToProps = (state: RootStateType): MapStateToPropsType => {
     return {
         messageData: state.messagesPage.messagesData,
         dialogsData: state.messagesPage.dialogsData,
-        newMessageText: state.messagesPage.newMessageText
+        newMessageText: state.messagesPage.newMessageText,
     };
 }
 

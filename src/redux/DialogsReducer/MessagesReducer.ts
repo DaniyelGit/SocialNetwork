@@ -54,14 +54,14 @@ export const MessagesReducer = (state: InitialStateType = initialState, action: 
 }
 
 
-export const updateNewMessageTextAC = (newMessageText: string) => { // change text in message
+export const updateNewMessageTextAC = (newMessageText: string) => {
     return {
         type: 'UPDATE-NEW-MESSAGE-TEXT',
         newMessageText,
     } as const
 }
 
-export const sendMessageAC = () => { // send message: AC str: 87;
+export const sendMessageAC = () => {
     return {
         type: 'SEND-MESSAGE',
     } as const
