@@ -7,7 +7,7 @@ import {
 } from "../../redux/DialogsReducer/MessagesReducer";
 import {Dialogs} from "./Dialogs";
 import {connect} from "react-redux";
-import {RootStateType} from "../../redux/redux-store";
+import {RootReducerType} from "../../redux/redux-store";
 import {Dispatch} from "redux";
 
 
@@ -19,7 +19,7 @@ type MapStateToPropsType = {
     dialogsData: Array<DialogsDataType>
     newMessageText: string
 }
-let mapStateToProps = (state: RootStateType): MapStateToPropsType => {
+let mapStateToProps = (state: RootReducerType): MapStateToPropsType => {
     return {
         messageData: state.messagesPage.messagesData,
         dialogsData: state.messagesPage.dialogsData,
