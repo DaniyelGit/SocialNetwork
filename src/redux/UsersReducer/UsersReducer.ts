@@ -4,12 +4,15 @@ type ActionsTypesForDialogs = ReturnType<typeof followedAC>
 
 
 export type UserType = {
-    id: string,
-    photoUrl: string,
-    followed: boolean,
-    fullName: string,
-    status: string,
-    location: { city: string, country: string }
+    id: string
+    name: string
+    uniqueUrlName: null
+    photos: {
+        small: string,
+        large: string
+    }
+    status: null,
+    followed: boolean
 }
 
 let initialState = {
