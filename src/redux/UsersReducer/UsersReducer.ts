@@ -1,6 +1,7 @@
 type ActionsTypesForDialogs = ReturnType<typeof followedAC>
     | ReturnType<typeof unFollowedAC>
-    | ReturnType<typeof setUsersAC>;
+    | ReturnType<typeof setUsersAC>
+    | ReturnType<typeof setCurrentPageAC>;
 
 
 export type UserType = {
@@ -16,7 +17,10 @@ export type UserType = {
 }
 
 let initialState = {
-    users: [] as Array<UserType>
+    users: [] as Array<UserType>,
+    pageSize: 5,
+    totalUsersCount: 0,
+    currentPage: 1,
 }
 
 export type initialUsersType = typeof initialState;
@@ -30,7 +34,13 @@ export const UsersReducer = (state: initialUsersType = initialState, action: Act
             return {...state, users: state.users.map(u => u.id === action.idUser ? {...u, followed: false} : u)}
         }
         case 'SET_USERS': {
-            return {...state, users: [...state.users, ...action.users]}
+            return {...state, users: action.users}
+        }
+        case 'SET_CURRENT_PAGE': {
+            return {
+                ...state,
+                currentPage: action.currentPage,
+            }
         }
         default: {
             return state
@@ -57,5 +67,12 @@ export const setUsersAC = (users: UserType[]) => {
     return {
         type: 'SET_USERS',
         users
+    } as const
+}
+
+export const setCurrentPageAC = (currentPage: number) => {
+    return {
+        type: 'SET_CURRENT_PAGE',
+        currentPage,
     } as const
 }
