@@ -2,7 +2,8 @@ type ActionsTypesForDialogs = ReturnType<typeof followedAC>
     | ReturnType<typeof unFollowedAC>
     | ReturnType<typeof setUsersAC>
     | ReturnType<typeof setCurrentPageAC>
-    | ReturnType<typeof setUsersCountAC>;
+    | ReturnType<typeof setUsersCountAC>
+    | ReturnType<typeof toggleIsFetchingAC>;
 
 
 export type UserType = {
@@ -15,6 +16,7 @@ export type UserType = {
     }
     status: null,
     followed: boolean
+    isFetching: boolean
 }
 
 let initialState = {
@@ -22,6 +24,7 @@ let initialState = {
     pageSize: 5,
     totalUsersCount: 0,
     currentPage: 1,
+    isFetching: false,
 }
 
 export type initialUsersType = typeof initialState;
@@ -47,6 +50,12 @@ export const UsersReducer = (state: initialUsersType = initialState, action: Act
             return {
                 ...state,
                 totalUsersCount: action.countUsers,
+            }
+        }
+        case 'TOGGLE_IS_FETCHING': {
+            return {
+                ...state,
+                isFetching: action.toggleValue,
             }
         }
         default: {
@@ -88,5 +97,12 @@ export const setUsersCountAC = (countUsers: number) => {
     return {
         type: 'SET_USERS_COUNT',
         countUsers,
+    } as const
+}
+
+export const toggleIsFetchingAC = (toggleValue: boolean) => {
+    return {
+        type: 'TOGGLE_IS_FETCHING',
+        toggleValue
     } as const
 }
