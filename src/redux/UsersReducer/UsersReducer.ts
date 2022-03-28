@@ -1,7 +1,8 @@
 type ActionsTypesForDialogs = ReturnType<typeof followedAC>
     | ReturnType<typeof unFollowedAC>
     | ReturnType<typeof setUsersAC>
-    | ReturnType<typeof setCurrentPageAC>;
+    | ReturnType<typeof setCurrentPageAC>
+    | ReturnType<typeof setUsersCountAC>;
 
 
 export type UserType = {
@@ -42,6 +43,12 @@ export const UsersReducer = (state: initialUsersType = initialState, action: Act
                 currentPage: action.currentPage,
             }
         }
+        case 'SET_USERS_COUNT': {
+            return {
+                ...state,
+                totalUsersCount: action.countUsers,
+            }
+        }
         default: {
             return state
         }
@@ -74,5 +81,12 @@ export const setCurrentPageAC = (currentPage: number) => {
     return {
         type: 'SET_CURRENT_PAGE',
         currentPage,
+    } as const
+}
+
+export const setUsersCountAC = (countUsers: number) => {
+    return {
+        type: 'SET_USERS_COUNT',
+        countUsers,
     } as const
 }
