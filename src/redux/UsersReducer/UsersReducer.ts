@@ -1,9 +1,9 @@
-type ActionsTypesForDialogs = ReturnType<typeof followedAC>
-    | ReturnType<typeof unFollowedAC>
-    | ReturnType<typeof setUsersAC>
-    | ReturnType<typeof setCurrentPageAC>
-    | ReturnType<typeof setUsersCountAC>
-    | ReturnType<typeof toggleIsFetchingAC>;
+type ActionsTypesForDialogs = ReturnType<typeof follow>
+    | ReturnType<typeof unFollow>
+    | ReturnType<typeof setUsers>
+    | ReturnType<typeof setCurrentPage>
+    | ReturnType<typeof setUsersCount>
+    | ReturnType<typeof toggleIsFetching>;
 
 
 export type UserType = {
@@ -65,42 +65,42 @@ export const UsersReducer = (state: initialUsersType = initialState, action: Act
 }
 
 
-export const followedAC = (idUser: string) => {
+export const follow = (idUser: string) => {
     return {
         type: 'FOLLOWED',
         idUser
     } as const
 }
 
-export const unFollowedAC = (idUser: string) => {
+export const unFollow = (idUser: string) => {
     return {
         type: 'UNFOLLOWED',
         idUser
     } as const
 }
 
-export const setUsersAC = (users: UserType[]) => {
+export const setUsers = (users: UserType[]) => {
     return {
         type: 'SET_USERS',
         users
     } as const
 }
 
-export const setCurrentPageAC = (currentPage: number) => {
+export const setCurrentPage = (currentPage: number) => {
     return {
         type: 'SET_CURRENT_PAGE',
         currentPage,
     } as const
 }
 
-export const setUsersCountAC = (countUsers: number) => {
+export const setUsersCount = (countUsers: number) => {
     return {
         type: 'SET_USERS_COUNT',
         countUsers,
     } as const
 }
 
-export const toggleIsFetchingAC = (toggleValue: boolean) => {
+export const toggleIsFetching = (toggleValue: boolean) => {
     return {
         type: 'TOGGLE_IS_FETCHING',
         toggleValue
