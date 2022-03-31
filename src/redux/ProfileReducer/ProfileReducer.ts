@@ -1,17 +1,25 @@
 export type ActionsTypesForProfile = ReturnType<typeof addPostAC>
     | ReturnType<typeof changeTextForInputAC>
+    | ReturnType<typeof setUserProfile>
 
 type PostsDataType = { id: string, text: string, likesCount: number }
 
-let initialState = {
+
+export type InitialProfileType = {
+    postsData: Array<PostsDataType>
+    newPostText: string
+    profileUser: any
+}
+
+let initialState: InitialProfileType = {
     postsData: [
         {id: '1', text: 'Hi, how are you?', likesCount: 11},
         {id: '2', text: 'It\'s my first post', likesCount: 15},
-    ] as Array<PostsDataType>,
+    ],
     newPostText: '',
+    profileUser: null
 };
 
-export type InitialProfileType = typeof initialState;
 
 export const ProfileReducer = (state: InitialProfileType = initialState, action: ActionsTypesForProfile): InitialProfileType => {
     switch (action.type) {
@@ -25,6 +33,9 @@ export const ProfileReducer = (state: InitialProfileType = initialState, action:
         }
         case 'CHANGE-TEXT-INPUT': {
             return {...state, newPostText: action.newPostText};
+        }
+        case 'SET_USER_PROFILE': {
+            return {...state, profileUser: action.user}
         }
         default: {
             return state;
@@ -43,6 +54,13 @@ export const changeTextForInputAC = (newPostText: string) => { // change text in
     return {
         type: 'CHANGE-TEXT-INPUT',
         newPostText: newPostText
+    } as const
+}
+
+export const setUserProfile = (user: null) => {
+    return {
+        type: 'SET_USER_PROFILE',
+        user,
     } as const
 }
 

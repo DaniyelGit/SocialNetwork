@@ -7,10 +7,10 @@ import {Sidebar} from "./components/Sidebar/Sidebar";
 import {News} from "./components/News/News";
 import {Audio} from "./components/Audio/Audio";
 import {Settings} from "./components/Settings/Settings";
-import {Profile} from "./components/Profile/Profile";
 
 import {UsersContainer} from "./components/Users/UsersContainer";
 import {DialogsContainer} from "./components/Dialogs/DialogsContainer";
+import {ProfileContainer} from "./components/Profile/ProfileContainer";
 
 const App = () => {
     return (
@@ -18,7 +18,7 @@ const App = () => {
             <Header/>
             <Sidebar/>
             <div className={'appWrapperContent'}>
-                <Route path={'/profile'}  render={() => <Profile/>}/>
+                <Route path={'/profile'}  render={() => <ProfileContainer/>}/>
                 <Route path={'/dialogs'} render={() => <DialogsContainer/>}/>
                 <Route path={'/news'} render={() => <News/>}/>
                 <Route path={'/audio'} render={() => <Audio/>}/>
