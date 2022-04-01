@@ -2,7 +2,29 @@ export type ActionsTypesForProfile = ReturnType<typeof addPostAC>
     | ReturnType<typeof changeTextForInputAC>
     | ReturnType<typeof setUserProfile>
 
-type PostsDataType = { id: string, text: string, likesCount: number }
+export type PostsDataType = { id: string, text: string, likesCount: number }
+
+export type ProfileUserType = {
+    aboutMe: string
+    contacts: {
+        facebook: string | null,
+        website: string | null,
+        vk: string | null,
+        twitter: string | null,
+        instagram: string | null,
+        youtube: string | null,
+        github: string | null,
+        mainLink: string | null
+    },
+    lookingForAJob: boolean,
+    lookingForAJobDescription: string,
+    fullName: string,
+    userId: number,
+    photos: {
+        small: string,
+        large: string
+    }
+}
 
 
 export type InitialProfileType = {
@@ -57,7 +79,7 @@ export const changeTextForInputAC = (newPostText: string) => { // change text in
     } as const
 }
 
-export const setUserProfile = (user: null) => {
+export const setUserProfile = (user: ProfileUserType) => {
     return {
         type: 'SET_USER_PROFILE',
         user,
