@@ -1,0 +1,48 @@
+.profileInfo {
+    display: flex;
+    padding: 10px;
+}
+
+.profileInfo__content {
+    width: 100%;
+}
+
+.profileInfo__avatar {
+    margin-right: 50px;
+}
+
+.profileInfo__mainInfo {
+    padding-bottom: 30px;
+    border-bottom: 1px solid #afafaf;
+    width: 100%;
+}
+
+.profileInfo__fullName {
+    margin-bottom: 5px;
+}
+
+.profileInfo__shortInfo {
+    margin-top: 20px;
+}
+
+.profileInfo__shortInfo_work {
+    display: flex;
+}
+
+.profileInfo__shortInfo_work label {
+    width: 130px;
+    line-height: 20px;
+}
+
+.profileInfo__socialNetworks {
+    margin-top: 20px;
+}
+
+.profileInfo__socialNetworks span {
+    display: inline-block;
+    width: 130px;
+}
+
+.profileInfo__socialNetworks a {
+    display: inline-block;
+}

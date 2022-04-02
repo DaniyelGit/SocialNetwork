@@ -18,7 +18,7 @@ class ProfileContainerAPI extends React.Component<mapStateToPropsType & mapDispa
 
     render() {
         return (
-            <Profile {...this.props}/>
+            <Profile profileUser={this.props.profileUser}/>
         );
     }
 }
@@ -35,7 +35,7 @@ const mapStateToProps = (state: RootReducerType): mapStateToPropsType => {
 }
 
 type mapDispatchToPropsType = {
-    setUserProfile: (user: any) => void
+    setUserProfile: (user: ProfileUserType) => void
 }
 
 
