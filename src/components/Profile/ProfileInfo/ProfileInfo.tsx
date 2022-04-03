@@ -13,12 +13,6 @@ export const ProfileInfo = (props: ProfileInfoProps) => {
         return <Preloader/>
     }
 
-    let socialNetworks = [];
-
-    for(let key in props.profileUser.contacts) {
-        socialNetworks.push({})
-    }
-
     return (
         <div className={s.profileInfo}>
             <div className={s.profileInfo__avatar}>
