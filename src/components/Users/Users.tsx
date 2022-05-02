@@ -32,7 +32,7 @@ export const Users = (props: UsersType) => {
                         pages.map(p => {
                             return (
                               <span key={`${p}`}
-                                    className={props.currentPage === p ? s.activePage : ''}
+                                    className={`${s.pageUserNav} ${props.currentPage === p ? s.activePage : ''}`}
                                     onClick={() => props.onPageChanged(p)}
                               >
                                {p}

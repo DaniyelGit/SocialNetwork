@@ -46,3 +46,8 @@
 .profileInfo__socialNetworks a {
     display: inline-block;
 }
+
+.userPhotoNaN {
+    width: 250px;
+    height: 250px;
+}

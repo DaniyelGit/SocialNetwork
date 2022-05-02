@@ -42,7 +42,7 @@ const mapStateToProps = (state: RootReducerType): mapStateToPropsType => {
 }
 
 
-class UsersContainerAPI extends React.Component<mapStateToPropsType & mapDispatchToPropsType> {
+class UsersContainerAPI extends React.Component<UsersContainerType> {
 
 
     componentDidMount() {

@@ -4,5 +4,8 @@
 
 .activePage {
     font-weight: 900;
+}
+
+.pageUserNav {
     cursor: pointer;
 }

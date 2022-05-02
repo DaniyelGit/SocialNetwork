@@ -1,5 +1,6 @@
 import React from "react";
 import s from './ProfileInfo.module.css';
+import userPhoto from '../../../assets/images/user.png';
 import {ProfileUserType} from "../../../redux/ProfileReducer/ProfileReducer";
 import {Preloader} from "../../../common/Preloader/Preloader";
 
@@ -16,7 +17,7 @@ export const ProfileInfo = (props: ProfileInfoProps) => {
     return (
         <div className={s.profileInfo}>
             <div className={s.profileInfo__avatar}>
-                <img src={props.profileUser.photos?.large} alt="photoUser"/>
+                <img className={s.userPhotoNaN} src={props.profileUser.photos?.large || userPhoto} alt="photoUser"/>
             </div>
             <div className={s.profileInfo__content}>
                 <div className={s.profileInfo__mainInfo}>
