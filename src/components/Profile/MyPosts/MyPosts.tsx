@@ -3,7 +3,23 @@ import s from './MyPosts.module.css';
 
 import {Post} from "./Post/Post";
 
+export type postDataType = {
+   id: number,
+   message: string,
+   likeCount: number
+}
+
 export const MyPosts = () => {
+
+   const postData: postDataType[] = [
+      {id: 1, message: 'Hi! How are you ?', likeCount: 23},
+      {id: 2, message: "It's my first post", likeCount: 3},
+   ];
+
+   const mappedPosts = postData.map(post => {
+      return <Post key={post.id} message={post.message} likesCount={post.likeCount}/>
+   })
+
    return (
       <div>
          My post
@@ -11,8 +27,7 @@ export const MyPosts = () => {
             <textarea/>
             <button>add post</button>
             <div>
-              <Post message={'Hi! How are you ?'} likesCount={23}/>
-              <Post message={"It's my first post"} likesCount={3}/>
+               {mappedPosts}
             </div>
          </div>
       </div>
