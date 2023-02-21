@@ -12,9 +12,14 @@ import {Dialogs} from "./components/Dialogs/Dialogs";
 
 type AppPropsType = {
    state: stateType
+   addPost: (textPost: string) => void
 }
 
 function App(props: AppPropsType) {
+
+   const profilePage = props.state.profilePage;
+   const messagePage = props.state.messagePage;
+
    return (
 
       <div className="app-wrapper">
@@ -23,8 +28,8 @@ function App(props: AppPropsType) {
 
          <div className={"app-wrapper-content"}>
             <Routes>
-               <Route path={'/profile'} element={<Profile state={props.state.profilePage}/>}/>
-               <Route path={'/dialogs'} element={<Dialogs state={props.state.messagePage}/>}/>
+               <Route path={'/profile'} element={<Profile state={profilePage} addPost={props.addPost}/>}/>
+               <Route path={'/dialogs'} element={<Dialogs state={messagePage}/>}/>
             </Routes>
          </div>
 

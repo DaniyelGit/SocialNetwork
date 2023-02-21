@@ -5,10 +5,11 @@ import App from './App';
 import {BrowserRouter} from "react-router-dom";
 
 import {state} from "./redux/state/state";
+import {addPost} from './redux/state/state';
 
 ReactDOM.render(
    <BrowserRouter>
-       <App state={state}/>
+       <App state={state} addPost={addPost}/>
    </BrowserRouter>
    , document.getElementById('root')
 );
