@@ -1,3 +1,5 @@
+import {rerenderEntireThree} from "../../render";
+
 export type postsType = {
    id: number,
    message: string,
@@ -55,4 +57,6 @@ export const addPost = (textPost: string) => {
       likeCount: 0,
    };
    state.profilePage.posts.push(newPost);
+
+   rerenderEntireThree(state);
 }
