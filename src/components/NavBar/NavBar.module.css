@@ -1,4 +1,91 @@
 .nav {
-   grid-area: n;
-   background-color: #00c700;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    max-width: 270px;
+    top: 0;
+    left: 0;
+    padding: 15px 0;
+    background-color: #fff;
+    box-shadow: 0px 14px 54px rgba(0,0,0,0.03);
+    width: 100%;
+    z-index: 999;
+    min-height: 100vh;
 }
+
+.logo {
+    padding: 0 30px 15px;
+    border-bottom: 1px solid #f1f1f1;
+}
+
+.userInfo {
+    display: flex;
+    padding: 20px 0;
+    gap: 15px;
+    border-bottom: 1px solid #f1f1f1;
+    margin: 0 30px;
+}
+
+.left img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.right p {
+    font-size: 16px;
+    font-weight: 600;
+    color: #000;
+    line-height: 1.25;
+    margin-bottom: 8px;
+}
+
+.right a {
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.8;
+    color: #6f7f92;
+}
+
+.menu {
+    padding: 24px 30px;
+}
+
+.menuTitle {
+    margin-bottom: 10px;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.75;
+    text-transform: uppercase;
+    color: #6f7f92;
+    letter-spacing: 1px;
+}
+
+.menuList {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.menuList li {
+
+}
+
+.menuList li a{
+    border-radius: 5px;
+    padding: 8px 14px;
+    transition: all .45s ease;
+    color: #6f7f92;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.6;
+}
+
+.menuList li a:hover {
+    background-color: #eaeff8;
+    color: #2f65b9;
+}
+
+
+
