@@ -68,11 +68,10 @@
     gap: 5px;
 }
 
-.menuList li {
-
-}
-
 .menuList li a{
+    display: flex;
+    align-items: center;
+    gap: 8px;
     border-radius: 5px;
     padding: 8px 14px;
     transition: all .45s ease;
@@ -80,17 +79,28 @@
     font-size: 14px;
     font-weight: 600;
     line-height: 1.6;
+    fill: #6f7f92;
+}
+
+.svgIcon {
+    width: 20px;
+    height: 20px;
+    color: inherit;
 }
 
 .menuList li a:hover {
     background-color: #eaeff8;
     color: #2f65b9;
+    fill: #2f65b9;
 }
 
 .menuList li a.active {
     color: #fff;
     background-color: #2f65b9;
+    fill: #fff;
 }
+
+
 
 
 

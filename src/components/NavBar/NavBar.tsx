@@ -2,6 +2,13 @@ import React from 'react';
 import {NavLink} from "react-router-dom";
 import s from './NavBar.module.css';
 
+import {ReactComponent as SvgProfile} from './svg_icon/icon-profile.svg';
+import {ReactComponent as SvgMessages} from './svg_icon/icon-messages.svg';
+import {ReactComponent as SvgNews} from './svg_icon/icon-news.svg';
+import {ReactComponent as SvgSettings} from './svg_icon/icon-settings.svg';
+import {ReactComponent as SvgMusic} from './svg_icon/icon-music.svg';
+
+
 
 export const NavBar = () => {
 
@@ -25,27 +32,33 @@ export const NavBar = () => {
             <h2 className={s.menuTitle}>Menu</h2>
             <ul className={s.menuList}>
                <li>
+
                   <NavLink to={'/profile'} className={stylesForLink}>
+                     <SvgProfile className={s.svgIcon}/>
                      <span>Profile</span>
                   </NavLink>
                </li>
                <li>
                   <NavLink to={'/dialogs'} className={stylesForLink}>
+                     <SvgMessages className={s.svgIcon}/>
                      <span>Messages</span>
                   </NavLink>
                </li>
                <li>
                   <NavLink to={'/news'} className={stylesForLink}>
+                     <SvgNews className={s.svgIcon}/>
                      <span>News</span>
                   </NavLink>
                </li>
                <li>
                   <NavLink to={'/music'} className={stylesForLink}>
+                     <SvgMusic className={s.svgIcon}/>
                      <span>Music</span>
                   </NavLink>
                </li>
                <li>
                   <NavLink to={'/settings'} className={stylesForLink}>
+                     <SvgSettings className={s.svgIcon}/>
                      <span>Settings</span>
                   </NavLink>
                </li>

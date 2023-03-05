@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import {Route, Routes} from "react-router-dom";
+import {Route, Routes, Navigate} from "react-router-dom";
 
 import {stateType} from "./redux/state/state";
 
@@ -28,6 +28,7 @@ function App(props: AppPropsType) {
 
          <div className={"app-wrapper-content"}>
             <Routes>
+               <Route path={'/'} element={<Navigate to={'/profile'}/>}/>
                <Route path={'/profile'} element={<Profile state={profilePage} addPost={props.addPost}/>}/>
                <Route path={'/dialogs'} element={<Dialogs state={messagePage}/>}/>
             </Routes>
