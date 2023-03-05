@@ -87,5 +87,10 @@
     color: #2f65b9;
 }
 
+.menuList li a.active {
+    color: #fff;
+    background-color: #2f65b9;
+}
+
 
 

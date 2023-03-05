@@ -5,6 +5,7 @@ import s from './NavBar.module.css';
 
 export const NavBar = () => {
 
+   const stylesForLink = ({isActive}: {isActive: boolean}) => isActive ? s.active : '';
 
    return (
       <nav className={s.nav}>
@@ -24,27 +25,27 @@ export const NavBar = () => {
             <h2 className={s.menuTitle}>Menu</h2>
             <ul className={s.menuList}>
                <li>
-                  <NavLink to={'/profile'}>
+                  <NavLink to={'/profile'} className={stylesForLink}>
                      <span>Profile</span>
                   </NavLink>
                </li>
                <li>
-                  <NavLink to={'/dialogs'}>
+                  <NavLink to={'/dialogs'} className={stylesForLink}>
                      <span>Messages</span>
                   </NavLink>
                </li>
                <li>
-                  <NavLink to={'/news'}>
+                  <NavLink to={'/news'} className={stylesForLink}>
                      <span>News</span>
                   </NavLink>
                </li>
                <li>
-                  <NavLink to={'/music'}>
+                  <NavLink to={'/music'} className={stylesForLink}>
                      <span>Music</span>
                   </NavLink>
                </li>
                <li>
-                  <NavLink to={'/settings'}>
+                  <NavLink to={'/settings'} className={stylesForLink}>
                      <span>Settings</span>
                   </NavLink>
                </li>
