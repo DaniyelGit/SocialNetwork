@@ -12,10 +12,11 @@ import {Dialogs} from "./components/Dialogs/Dialogs";
 
 type AppPropsType = {
    state: stateType
-   addPost: (textPost: string) => void
+   addPost: () => void
+   updatePostText: (valueText: string) => void
 }
 
-function App(props: AppPropsType) {
+export const App = (props: AppPropsType) => {
 
    const profilePage = props.state.profilePage;
    const messagePage = props.state.messagePage;
@@ -29,7 +30,11 @@ function App(props: AppPropsType) {
          <div className={"app-wrapper-content"}>
             <Routes>
                <Route path={'/'} element={<Navigate to={'/profile'}/>}/>
-               <Route path={'/profile'} element={<Profile state={profilePage} addPost={props.addPost}/>}/>
+               <Route path={'/profile'} element={<Profile
+                  state={profilePage}
+                  addPost={props.addPost}
+                  updatePostText={props.updatePostText}/>}
+               />
                <Route path={'/dialogs'} element={<Dialogs state={messagePage}/>}/>
             </Routes>
          </div>
@@ -38,5 +43,3 @@ function App(props: AppPropsType) {
 
    );
 }
-
-export default App;
