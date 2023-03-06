@@ -1,5 +1,6 @@
 import {rerenderEntireThree} from "../../render";
 
+// mini types for state
 export type postsType = {
    id: number,
    message: string,
@@ -22,7 +23,7 @@ export type messagePageType = {
    messages: messagesType[]
 }
 
-
+// main type for state
 export type stateType = {
   profilePage: profilePageType
   messagePage: messagePageType
