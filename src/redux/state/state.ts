@@ -1,4 +1,10 @@
-import {rerenderEntireThree} from "../../render";
+let rerenderEntireThree = () => {
+   console.log('state changed')
+};
+
+export const subscriber = (observer: () => void) => {
+   rerenderEntireThree = observer;
+}
 
 // mini types for state
 export type postsType = {
@@ -62,10 +68,11 @@ export const addPost = () => {
    };
    state.profilePage.posts.push(newPost);
    state.profilePage.newPostText = '';
-   rerenderEntireThree(state);
+   rerenderEntireThree();
 };
 
 export const updatePostText = (valueText: string) => {
    state.profilePage.newPostText = valueText;
-   rerenderEntireThree(state);
+   rerenderEntireThree();
 };
+
