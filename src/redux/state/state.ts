@@ -27,6 +27,7 @@ export type stateType = {
   messagePage: messagePageType
 };
 
+
 // global state
 export const store = {
    _state: {

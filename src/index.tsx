@@ -12,8 +12,8 @@ const rerenderEntireThree = () => {
       <BrowserRouter>
          <App
             state={store.getState()}
-            addPost={store.addPost}
-            updatePostText={store.updatePostText}
+            addPost={store.addPost.bind(store)}
+            updatePostText={store.updatePostText.bind(store)}
          />
       </BrowserRouter>
       , document.getElementById('root')
