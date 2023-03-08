@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import {Route, Routes, Navigate} from "react-router-dom";
 
-import {stateType} from "./redux/state/state";
+import {stateType, store} from "./redux/state/state";
 
 import {Header} from "./components/Header/Header";
 import {NavBar} from "./components/NavBar/NavBar";

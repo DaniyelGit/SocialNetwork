@@ -4,16 +4,16 @@ import './index.css';
 import {BrowserRouter} from "react-router-dom";
 
 import {App} from "./App";
-import {addPost, state, subscriber, updatePostText} from "./redux/state/state";
+import {store} from "./redux/state/state";
 
 
 const rerenderEntireThree = () => {
    ReactDOM.render(
       <BrowserRouter>
          <App
-            state={state}
-            addPost={addPost}
-            updatePostText={updatePostText}
+            state={store.getState()}
+            addPost={store.addPost}
+            updatePostText={store.updatePostText}
          />
       </BrowserRouter>
       , document.getElementById('root')
@@ -24,5 +24,5 @@ const rerenderEntireThree = () => {
 
 rerenderEntireThree();
 
-subscriber(rerenderEntireThree);
+store.subscribe(rerenderEntireThree);
 
