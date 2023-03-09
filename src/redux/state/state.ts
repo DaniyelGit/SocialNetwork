@@ -1,3 +1,5 @@
+import {ActionsType} from "../actionsCreator/actionsCreator";
+
 // global store
 export const store: storeType = {
    _state: {
@@ -46,7 +48,7 @@ export const store: storeType = {
             break;
          }
          case 'UPDATE-POST-TEXT': {
-            this._state.profilePage.newPostText = action.payload.newPostText;
+            this._state.profilePage.newPostText = action.payload.postText;
             this._callSubscriber();
             break;
          }
@@ -92,20 +94,6 @@ export type storeType = {
    getState: () => stateType
    subscribe: (observer: () => void) => void
    dispatch: (action: ActionsType) => void
-};
-// main actions type
-export type ActionsType = addPostActionType
-   | updatePostTextActionType;
-
-// action type
-type addPostActionType = {
-   type: 'ADD-POST',
-};
-type updatePostTextActionType = {
-   type: 'UPDATE-POST-TEXT',
-   payload: {
-      newPostText: string
-   }
 };
 
 
