@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import {Route, Routes, Navigate} from "react-router-dom";
 
-import {stateType, store} from "./redux/state/state";
+import {ActionsType, stateType, store} from "./redux/state/state";
 
 import {Header} from "./components/Header/Header";
 import {NavBar} from "./components/NavBar/NavBar";
@@ -12,8 +12,7 @@ import {Dialogs} from "./components/Dialogs/Dialogs";
 
 type AppPropsType = {
    state: stateType
-   addPost: () => void
-   updatePostText: (valueText: string) => void
+   dispatch: (action: ActionsType) => void
 }
 
 export const App = (props: AppPropsType) => {
@@ -32,8 +31,7 @@ export const App = (props: AppPropsType) => {
                <Route path={'/'} element={<Navigate to={'/profile'}/>}/>
                <Route path={'/profile'} element={<Profile
                   state={profilePage}
-                  addPost={props.addPost}
-                  updatePostText={props.updatePostText}/>}
+                  dispatch={props.dispatch}/>}
                />
                <Route path={'/dialogs'} element={<Dialogs state={messagePage}/>}/>
             </Routes>
