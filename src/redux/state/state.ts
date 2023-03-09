@@ -29,20 +29,6 @@ export const store: storeType = {
    getState() {
       return this._state;
    },
-   /*addPost() {
-      const newPost: postsType = {
-         id: 3,
-         message: this._state.profilePage.newPostText,
-         likeCount: 0,
-      };
-      this._state.profilePage.posts.push(newPost);
-      this._state.profilePage.newPostText = '';
-      this._callSubscriber();
-   },*/
-   /*updatePostText(valueText: string) {
-      this._state.profilePage.newPostText = valueText;
-      this._callSubscriber();
-   },*/
    subscribe(observer: () => void) {
       this._callSubscriber = observer;
    },
@@ -104,8 +90,6 @@ export type storeType = {
    _state: stateType
    _callSubscriber: () => void
    getState: () => stateType
-   // addPost: () => void
-   // updatePostText: (valueText: string) => void
    subscribe: (observer: () => void) => void
    dispatch: (action: ActionsType) => void
 };
