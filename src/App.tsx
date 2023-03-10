@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import {Route, Routes, Navigate} from "react-router-dom";
 
-import {stateType, store} from "./redux/state/state";
+import {stateType, store} from "./redux/state/store";
 
 import {Header} from "./components/Header/Header";
 import {NavBar} from "./components/NavBar/NavBar";
@@ -19,7 +19,7 @@ type AppPropsType = {
 export const App = (props: AppPropsType) => {
 
    const profilePage = props.state.profilePage;
-   const messagePage = props.state.messagePage;
+   const messagePage = props.state.dialogsPage;
 
    return (
 
@@ -34,7 +34,10 @@ export const App = (props: AppPropsType) => {
                   state={profilePage}
                   dispatch={props.dispatch}/>}
                />
-               <Route path={'/dialogs'} element={<Dialogs state={messagePage}/>}/>
+               <Route path={'/dialogs'} element={<Dialogs
+                  state={messagePage}
+                  dispatch={props.dispatch}/>}
+               />
             </Routes>
          </div>
 

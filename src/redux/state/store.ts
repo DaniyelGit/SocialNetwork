@@ -10,7 +10,7 @@ export const store: storeType = {
          ],
          newPostText: '',
       },
-      messagePage: {
+      dialogsPage: {
          dialogs: [
             {id: 1, name: 'Даниель'},
             {id: 2, name: 'Виктория'},
@@ -23,6 +23,7 @@ export const store: storeType = {
             {id: 2, message: 'How is your it-kamasutra'},
             {id: 3, message: 'Yo'},
          ],
+         newMessageText: '',
       },
    },
    _callSubscriber() {
@@ -52,6 +53,18 @@ export const store: storeType = {
             this._callSubscriber();
             break;
          }
+         case 'UPDATE_MESSAGE-TEXT': {
+            this._state.dialogsPage.newMessageText = action.payload.messageText;
+            this._callSubscriber();
+            break;
+         }
+         case 'ADD-NEW-MESSAGE': {
+            const newMessage: messagesType = {id: 4, message: this._state.dialogsPage.newMessageText};
+            this._state.dialogsPage.messages.push(newMessage);
+            this._state.dialogsPage.newMessageText = '';
+            this._callSubscriber();
+            break;
+         }
          default: {
             return this._state;
          }
@@ -78,14 +91,15 @@ export type profilePageType = {
    posts: postsType[]
    newPostText: string
 }
-export type messagePageType = {
+export type dialogsPageType = {
    dialogs: dialogsType[]
    messages: messagesType[]
+   newMessageText: string
 }
 // main type for state
 export type stateType = {
    profilePage: profilePageType
-   messagePage: messagePageType
+   dialogsPage: dialogsPageType
 };
 // main type for store
 export type storeType = {
