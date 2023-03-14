@@ -3,8 +3,9 @@ import s from './Dialogs.module.css';
 
 import {DialogItem} from "./DialogItem/DialogItem";
 import {MessageItem} from "./MessageItem/MessageItem";
-import {dialogsPageType} from "../../redux/state/store";
-import {ActionsType, addMessageAC, updateMessageTextAC} from "../../redux/actionsCreator/actionsCreator";
+import {ActionsType, dialogsPageType} from "../../redux/state/store";
+import {addMessageAC, updateMessageTextAC} from "../../redux/actionsCreator/actionsForDialogs";
+
 
 
 

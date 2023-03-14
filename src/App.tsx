@@ -8,7 +8,7 @@ import {Header} from "./components/Header/Header";
 import {NavBar} from "./components/NavBar/NavBar";
 import {Profile} from "./components/Profile/Profile";
 import {Dialogs} from "./components/Dialogs/Dialogs";
-import {ActionsType} from "./redux/actionsCreator/actionsCreator";
+import {ActionsType} from "./redux/state/store";
 
 
 type AppPropsType = {

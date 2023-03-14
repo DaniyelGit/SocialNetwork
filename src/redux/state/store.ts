@@ -1,4 +1,14 @@
-import {ActionsType} from "../actionsCreator/actionsCreator";
+import {
+   addPostAC,
+   updatePostTextAC
+} from "../actionsCreator/actionsForProfile";
+import {
+   addMessageAC,
+   updateMessageTextAC
+} from "../actionsCreator/actionsForDialogs";
+import {profileReducer} from "../reducer/profile-reducer";
+import {dialogsReducer} from "../reducer/dialogs-reducer";
+
 
 // global store
 export const store: storeType = {
@@ -36,39 +46,10 @@ export const store: storeType = {
       this._callSubscriber = observer;
    },
    dispatch(action: ActionsType) {
-      switch (action.type) {
-         case 'ADD-POST': {
-            const newPost: postsType = {
-               id: 3,
-               message: this._state.profilePage.newPostText,
-               likeCount: 0,
-            };
-            this._state.profilePage.posts.push(newPost);
-            this._state.profilePage.newPostText = '';
-            this._callSubscriber();
-            break;
-         }
-         case 'UPDATE-POST-TEXT': {
-            this._state.profilePage.newPostText = action.payload.postText;
-            this._callSubscriber();
-            break;
-         }
-         case 'UPDATE_MESSAGE-TEXT': {
-            this._state.dialogsPage.newMessageText = action.payload.messageText;
-            this._callSubscriber();
-            break;
-         }
-         case 'ADD-NEW-MESSAGE': {
-            const newMessage: messagesType = {id: 4, message: this._state.dialogsPage.newMessageText};
-            this._state.dialogsPage.messages.push(newMessage);
-            this._state.dialogsPage.newMessageText = '';
-            this._callSubscriber();
-            break;
-         }
-         default: {
-            return this._state;
-         }
-      }
+      this._state.profilePage = profileReducer(this._state.profilePage, action)
+      this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action);
+
+      this._callSubscriber();
    }
 }
 
@@ -110,5 +91,9 @@ export type storeType = {
    dispatch: (action: ActionsType) => void
 };
 
-
+// main type for action
+export type ActionsType = ReturnType<typeof addPostAC>
+   | ReturnType<typeof updatePostTextAC>
+   | ReturnType<typeof updateMessageTextAC>
+   | ReturnType<typeof addMessageAC>;
 
