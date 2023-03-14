@@ -37,7 +37,7 @@ export const store: storeType = {
       },
    },
    _callSubscriber() {
-      console.log('state changed')
+      console.log('store changed')
    },
    getState() {
       return this._state;
@@ -54,7 +54,7 @@ export const store: storeType = {
 }
 
 
-// mini types for state
+// mini types for store
 export type postsType = {
    id: number,
    message: string,
@@ -77,7 +77,7 @@ export type dialogsPageType = {
    messages: messagesType[]
    newMessageText: string
 }
-// main type for state
+// main type for store
 export type stateType = {
    profilePage: profilePageType
    dialogsPage: dialogsPageType

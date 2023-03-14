@@ -4,7 +4,7 @@ import './index.css';
 import {BrowserRouter} from "react-router-dom";
 
 import {App} from "./App";
-import {store} from "./redux/state/store";
+import {store} from "./redux/store/store";
 
 
 const rerenderEntireThree = () => {

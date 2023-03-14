@@ -2,7 +2,7 @@ import React, {ChangeEvent} from 'react';
 import s from './MyPosts.module.css';
 
 import {Post} from "./Post/Post";
-import {ActionsType, postsType} from "../../../redux/state/store";
+import {ActionsType, postsType} from "../../../redux/store/store";
 import {addPostAC, updatePostTextAC} from "../../../redux/actionsCreator/actionsForProfile";
 
 

@@ -5,14 +5,14 @@ export let a = 2;
 // import {App} from "./App";
 // import {BrowserRouter} from "react-router-dom";
 //
-// import {addPost, stateType, updatePostText} from './redux/state/state';
+// import {addPost, stateType, updatePostText} from './redux/store/store';
 //
 //
-// export const rerenderEntireThree = (state: stateType) => {
+// export const rerenderEntireThree = (store: stateType) => {
 //    ReactDOM.render(
 //       <BrowserRouter>
 //          <App
-//             state={state}
+//             store={store}
 //             addPost={addPost}
 //             updatePostText={updatePostText}
 //          />
