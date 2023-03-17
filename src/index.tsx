@@ -10,7 +10,7 @@ const rerenderEntireThree = () => {
    ReactDOM.render(
       <BrowserRouter>
          <App
-            state={store.getState()}
+            store={store}
             dispatch={store.dispatch}
          />
       </BrowserRouter>

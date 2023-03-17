@@ -6,20 +6,20 @@ import {Route, Routes, Navigate} from "react-router-dom";
 import {Header} from "./components/Header/Header";
 import {NavBar} from "./components/NavBar/NavBar";
 import {Profile} from "./components/Profile/Profile";
-import {Dialogs} from "./components/Dialogs/Dialogs";
-import {rootStoreType} from "./redux/redux-store/redux-store";
+import {storeType} from "./redux/redux-store/redux-store";
 import {actionsType} from "./redux/actionsCreator/allActionsType";
+import {DialogsContainer} from "./components/Dialogs/DialogsContainer";
 
 
 type AppPropsType = {
-   state: rootStoreType
+   store: storeType
    dispatch: (action: actionsType) => void
 }
 
 export const App = (props: AppPropsType) => {
 
-   const profilePage = props.state.profilePage;
-   const messagePage = props.state.dialogsPage;
+   const profilePage = props.store.getState().profilePage;
+   const messagePage = props.store.getState().dialogsPage;
 
    return (
 
@@ -34,7 +34,7 @@ export const App = (props: AppPropsType) => {
                   state={profilePage}
                   dispatch={props.dispatch}/>}
                />
-               <Route path={'/dialogs'} element={<Dialogs
+               <Route path={'/dialogs'} element={<DialogsContainer
                   state={messagePage}
                   dispatch={props.dispatch}/>}
                />
