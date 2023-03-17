@@ -6,14 +6,14 @@ import {MessageItem} from "./MessageItem/MessageItem";
 
 import {addMessageAC, updateMessageTextAC} from "../../redux/actionsCreator/actionsForDialogs";
 import {DialogsStateType} from "../../redux/reducer/dialogs-reducer";
-import {actionsType} from "../../redux/actionsCreator/allActionsType";
+import {ActionsType} from "../../redux/actionsCreator/allActionsType";
 
 
 
 
 type DialogsPropsType = {
    state: DialogsStateType
-   dispatch: (action: actionsType) => void
+   dispatch: (action: ActionsType) => void
 };
 
 export const Dialogs = (props: DialogsPropsType) => {

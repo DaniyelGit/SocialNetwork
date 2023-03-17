@@ -1,5 +1,5 @@
 import {actionsDialogsType} from "./actionsForDialogs";
 import {actionsProfileType} from "./actionsForProfile";
 
-export type actionsType = actionsDialogsType
+export type ActionsType = actionsDialogsType
    | actionsProfileType;

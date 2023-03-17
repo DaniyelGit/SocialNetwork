@@ -2,11 +2,11 @@ import React from 'react';
 import {MyPosts} from "./MyPosts";
 import {addPostAC, updatePostTextAC} from "../../../redux/actionsCreator/actionsForProfile";
 import {ProfileStateType} from "../../../redux/reducer/profile-reducer";
-import {actionsType} from "../../../redux/actionsCreator/allActionsType";
+import {ActionsType} from "../../../redux/actionsCreator/allActionsType";
 
 type MyPostContainerPropsType = {
    state: ProfileStateType
-   dispatch: (action: actionsType) => void
+   dispatch: (action: ActionsType) => void
 }
 
 export const MyPostContainer = (props: MyPostContainerPropsType) => {

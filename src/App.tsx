@@ -6,14 +6,14 @@ import {Route, Routes, Navigate} from "react-router-dom";
 import {Header} from "./components/Header/Header";
 import {NavBar} from "./components/NavBar/NavBar";
 import {Profile} from "./components/Profile/Profile";
-import {storeType} from "./redux/redux-store/redux-store";
-import {actionsType} from "./redux/actionsCreator/allActionsType";
+import {StoreType} from "./redux/redux-store/redux-store";
+import {ActionsType} from "./redux/actionsCreator/allActionsType";
 import {DialogsContainer} from "./components/Dialogs/DialogsContainer";
 
 
 type AppPropsType = {
-   store: storeType
-   dispatch: (action: actionsType) => void
+   store: StoreType
+   dispatch: (action: ActionsType) => void
 }
 
 export const App = (props: AppPropsType) => {
