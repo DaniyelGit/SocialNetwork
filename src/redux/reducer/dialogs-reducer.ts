@@ -1,4 +1,4 @@
-import {ActionsType} from "../store/store";
+import {actionsDialogsType} from "../actionsCreator/actionsForDialogs";
 
 type messagesType = {
    id: number,
@@ -8,13 +8,13 @@ type dialogsType= {
    id: number,
    name: string
 }
-type initialStateType = {
+export type DialogsStateType = {
    dialogs: dialogsType[]
    messages: messagesType[]
    newMessageText: string
 }
 
-const initialState: initialStateType = {
+const initialState: DialogsStateType = {
    dialogs: [
       {id: 1, name: 'Даниель'},
       {id: 2, name: 'Виктория'},
@@ -30,7 +30,7 @@ const initialState: initialStateType = {
    newMessageText: '',
 }
 
-export const dialogsReducer = (state = initialState, action: ActionsType): initialStateType => {
+export const dialogsReducer = (state = initialState, action: actionsDialogsType): DialogsStateType => {
    switch (action.type) {
       case 'UPDATE_MESSAGE-TEXT': {
          state.newMessageText = action.payload.messageText;

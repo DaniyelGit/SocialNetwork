@@ -1,4 +1,4 @@
-import {
+/*import {
    addPostAC,
    updatePostTextAC
 } from "../actionsCreator/actionsForProfile";
@@ -95,5 +95,7 @@ export type storeType = {
 export type ActionsType = ReturnType<typeof addPostAC>
    | ReturnType<typeof updatePostTextAC>
    | ReturnType<typeof updateMessageTextAC>
-   | ReturnType<typeof addMessageAC>;
+   | ReturnType<typeof addMessageAC>;*/
 
+
+export const test = 3;

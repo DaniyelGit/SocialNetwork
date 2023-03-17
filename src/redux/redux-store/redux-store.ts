@@ -8,5 +8,7 @@ const reducers = combineReducers({
    dialogsPage: dialogsReducer,
 })
 
+export type rootStoreType = ReturnType<typeof reducers>;
+
 export const store = createStore(reducers)
 

@@ -12,3 +12,7 @@ export const addMessageAC = () => {
       type: "ADD-NEW-MESSAGE",
    } as const
 }
+
+
+export type actionsDialogsType = ReturnType<typeof updateMessageTextAC>
+| ReturnType<typeof addMessageAC>;

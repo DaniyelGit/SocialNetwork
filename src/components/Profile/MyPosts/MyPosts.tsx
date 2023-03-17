@@ -2,12 +2,13 @@ import React, {ChangeEvent} from 'react';
 import s from './MyPosts.module.css';
 
 import {Post} from "./Post/Post";
-import {postsType} from "../../../redux/store/store";
+import {PostsType} from "../../../redux/reducer/profile-reducer";
+
 
 
 
 type MyPostsPropsType = {
-   postsData: postsType[]
+   postsData: PostsType[]
    newPostText: string
    addPost: () => void
    onChangeTextPost: (newTextPost: string) => void

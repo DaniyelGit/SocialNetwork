@@ -1,11 +1,12 @@
 import React from 'react';
 import {MyPosts} from "./MyPosts";
-import {ActionsType, profilePageType} from "../../../redux/store/store";
 import {addPostAC, updatePostTextAC} from "../../../redux/actionsCreator/actionsForProfile";
+import {ProfileStateType} from "../../../redux/reducer/profile-reducer";
+import {actionsType} from "../../../redux/actionsCreator/allActionsType";
 
 type MyPostContainerPropsType = {
-   state: profilePageType
-   dispatch: (action: ActionsType) => void
+   state: ProfileStateType
+   dispatch: (action: actionsType) => void
 }
 
 export const MyPostContainer = (props: MyPostContainerPropsType) => {

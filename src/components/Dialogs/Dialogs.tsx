@@ -3,15 +3,17 @@ import s from './Dialogs.module.css';
 
 import {DialogItem} from "./DialogItem/DialogItem";
 import {MessageItem} from "./MessageItem/MessageItem";
-import {ActionsType, dialogsPageType} from "../../redux/store/store";
+
 import {addMessageAC, updateMessageTextAC} from "../../redux/actionsCreator/actionsForDialogs";
+import {DialogsStateType} from "../../redux/reducer/dialogs-reducer";
+import {actionsType} from "../../redux/actionsCreator/allActionsType";
 
 
 
 
 type DialogsPropsType = {
-   state: dialogsPageType
-   dispatch: (action: ActionsType) => void
+   state: DialogsStateType
+   dispatch: (action: actionsType) => void
 };
 
 export const Dialogs = (props: DialogsPropsType) => {

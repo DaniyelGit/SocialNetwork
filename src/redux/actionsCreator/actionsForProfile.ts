@@ -12,3 +12,7 @@ export const updatePostTextAC = (postText: string) => {
       }
    } as const
 };
+
+
+export type actionsProfileType = ReturnType<typeof addPostAC>
+| ReturnType<typeof updatePostTextAC>;
