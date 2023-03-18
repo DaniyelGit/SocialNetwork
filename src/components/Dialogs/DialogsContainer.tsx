@@ -1,15 +1,20 @@
 import React from 'react';
-import {ActionsType} from "../../redux/actionsCreator/allActionsType";
-import {DialogsStateType} from "../../redux/reducer/dialogs-reducer";
 import {Dialogs} from "./Dialogs";
+import {StoreContext} from "../../storeContext/StoreContext";
+import {StoreType} from "../../redux/redux-store/redux-store";
 
-type DialogsContainerType = {
-   state: DialogsStateType
-   dispatch: (action: ActionsType) => void
-}
+type DialogsContainerType = {}
 
 export const DialogsContainer = (props: DialogsContainerType) => {
    return (
-      <Dialogs state={props.state} dispatch={props.dispatch}/>
+      <StoreContext.Consumer>
+         {
+            (store: StoreType) => {
+               return (
+                  <Dialogs state={store.getState().dialogsPage} dispatch={store.dispatch}/>
+               );
+            }
+         }
+      </StoreContext.Consumer>
    );
 };

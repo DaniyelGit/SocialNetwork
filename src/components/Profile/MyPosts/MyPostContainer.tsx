@@ -1,32 +1,32 @@
 import React from 'react';
 import {MyPosts} from "./MyPosts";
 import {addPostAC, updatePostTextAC} from "../../../redux/actionsCreator/actionsForProfile";
-import {ProfileStateType} from "../../../redux/reducer/profile-reducer";
-import {ActionsType} from "../../../redux/actionsCreator/allActionsType";
+import {StoreContext} from "../../../storeContext/StoreContext";
+import {StoreType} from "../../../redux/redux-store/redux-store";
 
-type MyPostContainerPropsType = {
-   state: ProfileStateType
-   dispatch: (action: ActionsType) => void
-}
+type MyPostContainerPropsType = {};
 
 export const MyPostContainer = (props: MyPostContainerPropsType) => {
 
-
-   const addPost = () => {
-      props.dispatch(addPostAC());
-   }
-
-   const onChangeTextPost = (newPostText: string) => {
-      props.dispatch(updatePostTextAC(newPostText));
-   }
-
-
    return (
-      <MyPosts
-         postsData={props.state.posts}
-         newPostText={props.state.newPostText}
-         addPost={addPost}
-         onChangeTextPost={onChangeTextPost}
-      />
+      <StoreContext.Consumer>
+         {
+            (store: StoreType) => {
+               const addPost = () => {
+                  store.dispatch(addPostAC());
+               }
+
+               const onChangeTextPost = (newPostText: string) => {
+                  store.dispatch(updatePostTextAC(newPostText));
+               }
+
+               return <MyPosts
+                  state={store.getState().profilePage}
+                  addPost={addPost}
+                  onChangeTextPost={onChangeTextPost}
+               />
+            }
+         }
+      </StoreContext.Consumer>
    );
 };

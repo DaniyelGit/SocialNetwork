@@ -11,15 +11,10 @@ import {ActionsType} from "./redux/actionsCreator/allActionsType";
 import {DialogsContainer} from "./components/Dialogs/DialogsContainer";
 
 
-type AppPropsType = {
-   store: StoreType
-   dispatch: (action: ActionsType) => void
-}
+type AppPropsType = {};
+
 
 export const App = (props: AppPropsType) => {
-
-   const profilePage = props.store.getState().profilePage;
-   const messagePage = props.store.getState().dialogsPage;
 
    return (
 
@@ -30,14 +25,8 @@ export const App = (props: AppPropsType) => {
          <div className={"app-wrapper-content"}>
             <Routes>
                <Route path={'/'} element={<Navigate to={'/profile'}/>}/>
-               <Route path={'/profile'} element={<Profile
-                  state={profilePage}
-                  dispatch={props.dispatch}/>}
-               />
-               <Route path={'/dialogs'} element={<DialogsContainer
-                  state={messagePage}
-                  dispatch={props.dispatch}/>}
-               />
+               <Route path={'/profile'} element={<Profile/>}/>
+               <Route path={'/dialogs'} element={<DialogsContainer/>}/>
             </Routes>
          </div>
 
