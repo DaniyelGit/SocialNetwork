@@ -5,7 +5,8 @@ import {BrowserRouter} from "react-router-dom";
 
 import {App} from "./App";
 import {store} from "./redux/redux-store/redux-store";
-import {Provider} from "./storeContext/StoreContext";
+import {Provider} from "react-redux";
+
 
 const rerenderEntireThree = () => {
    ReactDOM.render(

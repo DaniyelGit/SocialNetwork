@@ -7,18 +7,14 @@ import {addMessageAC, updateMessageTextAC} from "../../redux/actionsCreator/acti
 
 import {ActionsType} from "../../redux/actionsCreator/allActionsType";
 import {InitialStateDialogsType} from "../../redux/reducer/dialogs-reducer";
+import {DialogsPropsType} from "./DialogsContainer";
 
-
-type DialogsPropsType = {
-   state: InitialStateDialogsType
-   dispatch: (action: ActionsType) => void
-};
 
 export const Dialogs = (props: DialogsPropsType) => {
 
-   const dataDialogs = props.state.dialogs;
-   const dataMessages = props.state.messages;
-   const newMessageText = props.state.newMessageText;
+   const dataDialogs = props.dialogsState.dialogs;
+   const dataMessages = props.dialogsState.messages;
+   const newMessageText = props.dialogsState.newMessageText;
 
    const dialogsElements = dataDialogs.map(item => {
       return <DialogItem key={item.id} id={item.id} name={item.name}/>
@@ -29,11 +25,11 @@ export const Dialogs = (props: DialogsPropsType) => {
    });
 
    const addMessageHandler = () => {
-      props.dispatch(addMessageAC());
+      props.addMessage();
    }
 
    const onChangeHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
-      props.dispatch(updateMessageTextAC(e.currentTarget.value));
+      props.updateMessageText(e.currentTarget.value);
    }
 
    return (
