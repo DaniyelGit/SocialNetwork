@@ -16,11 +16,11 @@ export const Dialogs = (props: DialogsPropsType) => {
    const dataMessages = props.dialogsState.messages;
    const newMessageText = props.dialogsState.newMessageText;
 
-   const dialogsElements = dataDialogs.map(item => {
+   const mappedDialogsElements = dataDialogs.map(item => {
       return <DialogItem key={item.id} id={item.id} name={item.name}/>
    });
 
-   const messagesElements = dataMessages.map(item => {
+   const mappedMessagesElements = dataMessages.map(item => {
       return <MessageItem key={item.id} message={item.message}/>
    });
 
@@ -28,24 +28,24 @@ export const Dialogs = (props: DialogsPropsType) => {
       props.addMessage();
    }
 
-   const onChangeHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
+   const updateMessageTextHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
       props.updateMessageText(e.currentTarget.value);
    }
 
    return (
       <div className={s.dialogs}>
          <div className={s.dialogsItem}>
-            {dialogsElements}
+            {mappedDialogsElements}
          </div>
 
          <div className={s.messages}>
-            <div>{messagesElements}</div>
+            <div>{mappedMessagesElements}</div>
             <div>
                <div>
                   <textarea
                      value={newMessageText}
                      placeholder={'Enter your message'}
-                     onChange={onChangeHandler}
+                     onChange={updateMessageTextHandler}
                   />
                </div>
                <div>

@@ -1,6 +1,6 @@
 import React from 'react';
 import {Dialogs} from "./Dialogs";
-import {StoreContext} from "../../storeContext/StoreContext";
+import {StoreContext} from "../../old code/storeContext/StoreContext";
 import {AppStateType, StoreType} from "../../redux/redux-store/redux-store";
 import {connect} from "react-redux";
 import {Dispatch} from "redux";

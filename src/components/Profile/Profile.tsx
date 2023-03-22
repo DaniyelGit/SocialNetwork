@@ -1,5 +1,5 @@
 import React from 'react';
-import {MyPostContainer} from "./MyPosts/MyPostContainer";
+import {MyPostsContainer} from "./MyPosts/MyPostContainer";
 
 import {ProfileInfo} from "./ProfileInfo/ProfileInfo";
 
@@ -10,7 +10,7 @@ export const Profile = (props: ProfilePropsType) => {
    return (
       <div>
          <ProfileInfo/>
-         <MyPostContainer/>
+         <MyPostsContainer/>
       </div>
    );
 };

@@ -1,10 +1,12 @@
 import React from 'react';
 import {MyPosts} from "./MyPosts";
 import {addPostAC, updatePostTextAC} from "../../../redux/actionsCreator/actionsForProfile";
-import {StoreContext} from "../../../storeContext/StoreContext";
-import {StoreType} from "../../../redux/redux-store/redux-store";
+import {AppStateType} from "../../../redux/redux-store/redux-store";
+import {connect} from "react-redux";
+import {Dispatch} from "redux";
+import {InitialStateProfileType} from "../../../redux/reducer/profile-reducer";
 
-type MyPostContainerPropsType = {};
+/*type MyPostContainerPropsType = {};
 
 export const MyPostContainer = (props: MyPostContainerPropsType) => {
 
@@ -29,4 +31,31 @@ export const MyPostContainer = (props: MyPostContainerPropsType) => {
          }
       </StoreContext.Consumer>
    );
-};
+};*/ // самописный контейнер
+
+type MapStateToPropsType = {
+   profileState: InitialStateProfileType
+}
+type MapDispatchToPropsType = {
+   addPost: () => void
+   updateTextPost: (newPostText: string) => void
+}
+export type MyPostsPropsType = MapStateToPropsType & MapDispatchToPropsType;
+
+const mapStateToProps = (state: AppStateType): MapStateToPropsType => {
+   return {
+      profileState: state.profilePage,
+   }
+}
+const mapDispatchToProps = (dispatch: Dispatch): MapDispatchToPropsType => {
+   return {
+      addPost: () => {
+         dispatch(addPostAC());
+      },
+      updateTextPost: (newPostText: string) => {
+         dispatch(updatePostTextAC(newPostText));
+      },
+   }
+}
+
+export const MyPostsContainer = connect(mapStateToProps, mapDispatchToProps)(MyPosts);

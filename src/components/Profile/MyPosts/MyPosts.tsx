@@ -1,19 +1,14 @@
 import React, {ChangeEvent} from 'react';
 import s from './MyPosts.module.css';
+
 import {Post} from "./Post/Post";
-import {InitialStateProfileType} from "../../../redux/reducer/profile-reducer";
+import {MyPostsPropsType} from "./MyPostContainer";
 
-
-type MyPostsPropsType = {
-   state: InitialStateProfileType
-   addPost: () => void
-   onChangeTextPost: (newTextPost: string) => void
-}
 
 export const MyPosts = (props: MyPostsPropsType) => {
 
-   const postsData = props.state.posts;
-   const newPostText = props.state.newPostText;
+   const postsData = props.profileState.posts;
+   const newPostText = props.profileState.newPostText;
 
    const mappedPosts = postsData.map(post => {
       return <Post key={post.id} message={post.message} likesCount={post.likeCount}/>
@@ -23,8 +18,8 @@ export const MyPosts = (props: MyPostsPropsType) => {
       props.addPost();
    }
 
-   const onChangeHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
-      props.onChangeTextPost(e.currentTarget.value);
+   const updateTextPostHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
+      props.updateTextPost(e.currentTarget.value);
    }
 
    return (
@@ -33,7 +28,7 @@ export const MyPosts = (props: MyPostsPropsType) => {
          <div>
             <textarea
                value={newPostText}
-               onChange={onChangeHandler}
+               onChange={updateTextPostHandler}
             />
             <button onClick={addPostHandler}>add post</button>
             <div>
