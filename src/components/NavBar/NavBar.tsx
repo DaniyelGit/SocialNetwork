@@ -45,6 +45,11 @@ export const NavBar = () => {
                   </NavLink>
                </li>
                <li>
+                  <NavLink to={'/users'} className={stylesForLink}>
+                     <span>Users</span>
+                  </NavLink>
+               </li>
+               <li>
                   <NavLink to={'/news'} className={stylesForLink}>
                      <SvgNews className={s.svgIcon}/>
                      <span>News</span>
