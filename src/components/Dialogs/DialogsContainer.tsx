@@ -1,11 +1,9 @@
 import React from 'react';
 import {Dialogs} from "./Dialogs";
-import {StoreContext} from "../../old code/storeContext/StoreContext";
-import {AppStateType, StoreType} from "../../redux/redux-store/redux-store";
+import {AppStateType} from "../../redux/redux-store/redux-store";
 import {connect} from "react-redux";
 import {Dispatch} from "redux";
-import {updatePostTextAC} from "../../redux/actionsCreator/actionsForProfile";
-import {addMessageAC} from "../../redux/actionsCreator/actionsForDialogs";
+import {addMessageAC, updateMessageTextAC} from "../../redux/actionsCreator/actionsForDialogs";
 import {InitialStateDialogsType} from "../../redux/reducer/dialogs-reducer";
 
 /*type DialogsContainerType = {}
@@ -42,7 +40,7 @@ const mapStateToProps = (state: AppStateType): MapStateToPropsType => {
 const mapDispatchToProps = (dispatch: Dispatch): MapDispatchToPropsType => {
    return {
       updateMessageText: (messageText: string) => {
-         dispatch(updatePostTextAC(messageText));
+         dispatch(updateMessageTextAC(messageText));
       },
       addMessage: () => {
          dispatch(addMessageAC());

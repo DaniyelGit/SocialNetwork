@@ -29,6 +29,7 @@ const initialState = {
 }
 
 export const dialogsReducer = (state: InitialStateDialogsType = initialState, action: actionsDialogsType): InitialStateDialogsType => {
+   debugger
    switch (action.type) {
       case 'UPDATE_MESSAGE-TEXT': {
          return {...state, newMessageText: action.payload};
@@ -38,7 +39,10 @@ export const dialogsReducer = (state: InitialStateDialogsType = initialState, ac
             id: 4,
             message: state.newMessageText
          }
-         return {...state, messages: [...state.messages, newMessage]};
+         return {...state,
+            messages: [...state.messages, newMessage],
+            newMessageText: '',
+         };
       }
       default: {
          return state;
