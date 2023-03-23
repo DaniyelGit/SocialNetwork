@@ -1,9 +1,7 @@
 export const updateMessageTextAC = (messageText: string) => {
    return {
       type: "UPDATE_MESSAGE-TEXT",
-      payload: {
-         messageText
-      }
+      payload: messageText
    } as const
 }
 
