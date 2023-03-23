@@ -8,22 +8,15 @@ import {store} from "./redux/redux-store/redux-store";
 import {Provider} from "react-redux";
 
 
-const rerenderEntireThree = () => {
-   ReactDOM.render(
-      <BrowserRouter>
-         <Provider store={store}>
-            <App/>
-         </Provider>
-      </BrowserRouter>
-      , document.getElementById('root')
-   );
-};
+ReactDOM.render(
+   <BrowserRouter>
+      <Provider store={store}>
+         <App/>
+      </Provider>
+   </BrowserRouter>
+   , document.getElementById('root')
+);
 
-
-
-rerenderEntireThree();
-
-store.subscribe(rerenderEntireThree);
 
 
 
