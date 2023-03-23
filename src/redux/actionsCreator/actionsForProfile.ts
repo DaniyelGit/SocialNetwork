@@ -7,9 +7,7 @@ export const addPostAC = () => {
 export const updatePostTextAC = (postText: string) => {
    return {
       type: "UPDATE-POST-TEXT",
-      payload: {
-         postText: postText
-      }
+      payload: postText
    } as const
 };
 
