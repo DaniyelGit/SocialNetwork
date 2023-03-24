@@ -7,7 +7,7 @@ import {Header} from "./components/Header/Header";
 import {NavBar} from "./components/NavBar/NavBar";
 import {Profile} from "./components/Profile/Profile";
 import {DialogsContainer} from "./components/Dialogs/DialogsContainer";
-import {Users} from "./components/Users/Users";
+import {UsersContainer} from "./components/Users/UsersContainer";
 
 type AppPropsType = {};
 
@@ -24,7 +24,7 @@ export const App = (props: AppPropsType) => {
                <Route path={'/'} element={<Navigate to={'/profile'}/>}/>
                <Route path={'/profile'} element={<Profile/>}/>
                <Route path={'/dialogs'} element={<DialogsContainer/>}/>
-               <Route path={'/users'} element={<Users/>}/>
+               <Route path={'/users'} element={<UsersContainer/>}/>
             </Routes>
          </div>
 

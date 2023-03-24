@@ -1,45 +1,26 @@
+import {actionsUsersType} from "../actionsCreator/actionsForUsers";
+
 type LocationType = {
    city: string
    country: string
 };
-type UserType = {
+export type UserType = {
    id: number
    fullName: string
    status: string
+   photoUrl: string
    location: LocationType
    isFollow: boolean
 };
 
+// main type for state users
 export type InitialStateUsersPageType = typeof InitialStateUsersPage;
 
 const InitialStateUsersPage = {
-   users: [
-      {
-         id: 1,
-         fullName: 'Daniyel',
-         status: 'I am a boss',
-         location: {city: 'Ostrovets', country: 'Belarus'},
-         isFollow: true
-      },
-      {
-         id: 2,
-         fullName: 'Victoria',
-         status: 'Hi all !',
-         location: {city: 'Ostrovets', country: 'Belarus'},
-         isFollow: false
-      },
-      {id: 3, fullName: 'Andrey', status: 'I love music', location: {city: 'Lida', country: 'Belarus'}, isFollow: true},
-      {
-         id: 4,
-         fullName: 'Theresa',
-         status: 'I want to travel',
-         location: {city: 'Radun', country: 'Belarus'},
-         isFollow: false
-      },
-   ] as UserType[],
+   users: [] as UserType[],
 }
 
-export const usersReducer = (state: InitialStateUsersPageType, action: any): InitialStateUsersPageType => {
+export const usersReducer = (state: InitialStateUsersPageType = InitialStateUsersPage, action: actionsUsersType): InitialStateUsersPageType => {
    switch (action.type) {
       case "FOLLOW-USER": {
          return {
