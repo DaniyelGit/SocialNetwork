@@ -9,7 +9,7 @@ export const Users = (props: UsersPropsType) => {
             id: 1,
             fullName: 'Daniyel',
             status: 'I am a boss',
-            photoUrl: 'https://via.placeholder.com/50x50',
+            photoUrl: 'https://via.placeholder.com/100x100',
             location: {city: 'Ostrovets', country: 'Belarus'},
             isFollow: true
          },
@@ -17,7 +17,7 @@ export const Users = (props: UsersPropsType) => {
             id: 2,
             fullName: 'Victoria',
             status: 'Hi all !',
-            photoUrl: 'https://via.placeholder.com/50x50',
+            photoUrl: 'https://via.placeholder.com/100x100',
             location: {city: 'Ostrovets', country: 'Belarus'},
             isFollow: false
          },
@@ -25,14 +25,14 @@ export const Users = (props: UsersPropsType) => {
             id: 3,
             fullName: 'Andrey',
             status: 'I love music',
-            photoUrl: 'https://via.placeholder.com/50x50',
+            photoUrl: 'https://via.placeholder.com/100x100',
             location: {city: 'Lida', country: 'Belarus'},
             isFollow: true},
          {
             id: 4,
             fullName: 'Theresa',
             status: 'I want to travel',
-            photoUrl: 'https://via.placeholder.com/50x50',
+            photoUrl: 'https://via.placeholder.com/100x100',
             location: {city: 'Radun', country: 'Belarus'},
             isFollow: false
          },
