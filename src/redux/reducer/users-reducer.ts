@@ -39,7 +39,7 @@ const InitialStateUsersPage = {
    ] as UserType[],
 }
 
-export const UsersReducer = (state: InitialStateUsersPageType, action: any): InitialStateUsersPageType => {
+export const usersReducer = (state: InitialStateUsersPageType, action: any): InitialStateUsersPageType => {
    switch (action.type) {
       case "FOLLOW-USER": {
          return {
