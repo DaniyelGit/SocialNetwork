@@ -6,11 +6,13 @@ type LocationType = {
 };
 export type UserType = {
    id: number
-   fullName: string
+   name: string
    status: string
-   photoUrl: string
-   location: LocationType
-   isFollow: boolean
+   photos: {
+      small: string
+      large: string
+   }
+   followed: boolean
 };
 
 // main type for state users
@@ -26,7 +28,7 @@ export const usersReducer = (state: InitialStateUsersPageType = InitialStateUser
          return {
             ...state,
             users: state.users.map(u => u.id === action.payload
-               ? {...u, isFollow: true}
+               ? {...u, followed: true}
                : u)
          };
       }
@@ -34,7 +36,7 @@ export const usersReducer = (state: InitialStateUsersPageType = InitialStateUser
          return {
             ...state,
             users: state.users.map(u => u.id === action.payload
-               ? {...u, isFollow: false}
+               ? {...u, followed: false}
                : u)
          }
       }
