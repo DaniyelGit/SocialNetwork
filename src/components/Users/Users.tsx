@@ -8,11 +8,9 @@ import axios from "axios";
       if (props.usersState.length === 0) {
          axios.get('https://social-network.samuraijs.com/api/1.0/users')
             .then(response => {
-               console.log(response)
                props.setUsers(response.data.items);
             })
-      }
-      ;
+      };
    }
 
    return (
@@ -49,6 +47,8 @@ import axios from "axios";
    );
 };*/
 
+
+
 export class Users extends React.Component<UsersPropsType, {}> {
 
    componentDidMount() {
@@ -58,11 +58,19 @@ export class Users extends React.Component<UsersPropsType, {}> {
                this.props.setUsers(response.data.items);
             });
       }
+
    }
 
    render() {
       return (
          <div>
+            <div>
+               <span>1</span>
+               <span>2</span>
+               <span>3</span>
+               <span>4</span>
+               <span>5</span>
+            </div>
             {
                this.props.usersState.map(u => {
                   return (

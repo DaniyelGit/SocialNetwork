@@ -20,6 +20,9 @@ export type InitialStateUsersPageType = typeof InitialStateUsersPage;
 
 const InitialStateUsersPage = {
    users: [] as UserType[],
+   currentPage: 1,
+   pageSize: 5,
+   totalUsersCount: 54,
 }
 
 
