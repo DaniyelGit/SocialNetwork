@@ -22,7 +22,7 @@ const InitialStateUsersPage = {
    users: [] as UserType[],
    currentPage: 1,
    pageSize: 5,
-   totalUsersCount: 50,
+   totalUsersCount: 0,
 }
 
 

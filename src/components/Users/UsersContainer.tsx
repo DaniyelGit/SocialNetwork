@@ -9,7 +9,44 @@ import {
    setUsersAC,
    unfollowUserAC
 } from "../../redux/actionsCreator/actionsForUsers";
+import React from "react";
+import axios from "axios";
 
+// Users Container API
+class UsersContainerAPI extends React.Component<UsersContainerAPIType, {}> {
+   componentDidMount() {
+      axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
+         .then(response => {
+            this.props.setUsers(response.data.items);
+            this.props.setTotalUsersCount(response.data.totalCount);
+         });
+   }
+
+   changeCurrentPageHandler = (currentPage: number) => {
+      this.props.changeCurrentPage(currentPage);
+      axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${currentPage}&count=${this.props.pageSize}`)
+         .then(response => {
+            this.props.setUsers(response.data.items);
+         });
+   }
+
+   render() {
+      return (
+         <Users
+            usersState={this.props.usersState}
+            totalUsersCount={this.props.totalUsersCount}
+            pageSize={this.props.pageSize}
+            currentPage={this.props.currentPage}
+            unfollowUser={this.props.unfollowUser}
+            followUser={this.props.followUser}
+            changeCurrentPageHandler={this.changeCurrentPageHandler}
+         />
+      );
+   }
+
+}
+
+//Users Container
 type mapStateToPropsType = {
    usersState: UserType[]
    totalUsersCount: number
@@ -18,12 +55,12 @@ type mapStateToPropsType = {
 }
 type mapDispatchToPropsType = {
    followUser: (userID: number) => void
-   unfollowUsers: (userID: number) => void
+   unfollowUser: (userID: number) => void
    setUsers: (users: UserType[]) => void
    changeCurrentPage: (currentPage: number) => void
    setTotalUsersCount: (totalCount: number) => void
 }
-export type UsersPropsType = mapStateToPropsType & mapDispatchToPropsType;
+export type UsersContainerAPIType = mapStateToPropsType & mapDispatchToPropsType;
 
 const mapStateToProps = (state: AppStateType): mapStateToPropsType => {
    return {
@@ -38,7 +75,7 @@ const mapDispatchToProps = (dispatch: Dispatch): mapDispatchToPropsType => {
       followUser: (userID: number) => {
          dispatch(followUserAC(userID));
       },
-      unfollowUsers: (userID: number) => {
+      unfollowUser: (userID: number) => {
          dispatch(unfollowUserAC(userID));
       },
       setUsers: (users: UserType[]) => {
@@ -54,4 +91,4 @@ const mapDispatchToProps = (dispatch: Dispatch): mapDispatchToPropsType => {
 }
 
 
-export const UsersContainer = connect(mapStateToProps, mapDispatchToProps)(Users)
+export const UsersContainer = connect(mapStateToProps, mapDispatchToProps)(UsersContainerAPI)
