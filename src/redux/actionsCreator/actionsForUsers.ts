@@ -27,8 +27,29 @@ export const setUsersAC = (users: UserType[]) => {
    } as const;
 }
 
+type changeCurrentPageACType = ReturnType<typeof changeCurrentPageAC>;
+export const changeCurrentPageAC = (currentPage: number) => {
+   return {
+      type: 'CHANGE-CURRENT-PAGE',
+      payload: currentPage,
+   } as const;
+}
+
+
+type setTotalUsersCountACType = ReturnType<typeof setTotalUsersCountAC>;
+export const setTotalUsersCountAC = (totalCount: number) => {
+   return {
+      type: 'SET-TOTAL-USERS-COUNT',
+      payload: {
+         totalUsersCount: totalCount
+      },
+   } as const;
+}
+
 
 
 export type actionsUsersType = followUserACType
    | unfollowUserACType
-   | setUsersACType;
+   | setUsersACType
+   | changeCurrentPageACType
+   | setTotalUsersCountACType;

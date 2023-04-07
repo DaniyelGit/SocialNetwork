@@ -22,7 +22,7 @@ const InitialStateUsersPage = {
    users: [] as UserType[],
    currentPage: 1,
    pageSize: 5,
-   totalUsersCount: 54,
+   totalUsersCount: 50,
 }
 
 
@@ -47,7 +47,19 @@ export const usersReducer = (state: InitialStateUsersPageType = InitialStateUser
       case "SET-USERS": {
          return {
             ...state,
-            users: [...state.users, ...action.payload]
+            users: [...action.payload]
+         }
+      }
+      case "CHANGE-CURRENT-PAGE": {
+         return {
+            ...state,
+            currentPage: action.payload,
+         }
+      }
+      case "SET-TOTAL-USERS-COUNT": {
+         return {
+            ...state,
+            ...action.payload,
          }
       }
       default: {
