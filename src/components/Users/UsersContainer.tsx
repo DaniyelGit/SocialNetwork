@@ -4,10 +4,10 @@ import {AppStateType} from "../../redux/redux-store/redux-store";
 import {Dispatch} from "redux";
 import {UserType} from "../../redux/reducer/users-reducer";
 import {
-   changeCurrentPageAC,
-   followUserAC, setTotalUsersCountAC,
-   setUsersAC, toggleIsFetchingAC,
-   unfollowUserAC
+   changeCurrentPage,
+   followUser, setTotalUsersCount,
+   setUsers, toggleIsFetching,
+   unfollowUser
 } from "../../redux/actionsCreator/actionsForUsers";
 import React from "react";
 import axios from "axios";
@@ -84,7 +84,8 @@ const mapStateToProps = (state: AppStateType): mapStateToPropsType => {
       isFetching: state.usersPage.isFetching,
    }
 }
-const mapDispatchToProps = (dispatch: Dispatch): mapDispatchToPropsType => {
+
+/*const mapDispatchToProps = (dispatch: Dispatch): mapDispatchToPropsType => {
    return {
       followUser: (userID: number) => {
          dispatch(followUserAC(userID));
@@ -105,7 +106,11 @@ const mapDispatchToProps = (dispatch: Dispatch): mapDispatchToPropsType => {
          dispatch(toggleIsFetchingAC(isFetching))
       }
    }
-}
+}*/
 
 
-export const UsersContainer = connect(mapStateToProps, mapDispatchToProps)(UsersContainerAPI)
+export const UsersContainer = connect(mapStateToProps, {
+   followUser, unfollowUser, setUsers,
+   changeCurrentPage, setTotalUsersCount,
+   toggleIsFetching,
+})(UsersContainerAPI)

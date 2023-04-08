@@ -1,6 +1,7 @@
 import React from 'react';
 import s from './Users.module.css';
 import {UserType} from "../../redux/reducer/users-reducer";
+import {NavLink} from "react-router-dom";
 
 
 /*export const Users = (props: UsersPropsType) => {
@@ -136,7 +137,6 @@ type UsersPropsType = {
 }
 
 export const Users = (props: UsersPropsType) => {
-
    let pagesSize = Math.ceil(props.totalUsersCount / props.pageSize);
 
    const pages = [];
@@ -153,8 +153,10 @@ export const Users = (props: UsersPropsType) => {
                   <div key={u.id}>
                      <div>
                         <div>
-                           <img src={u.photos.small ? u.photos.small : 'https://via.placeholder.com/100x100'}
-                                alt="avatar-user"/>
+                           <NavLink to={`/profile/${u.id}`}>
+                              <img src={u.photos.small ? u.photos.small : 'https://via.placeholder.com/100x100'}
+                                   alt="avatar-user"/>
+                           </NavLink>
                         </div>
                         <div>
                            {

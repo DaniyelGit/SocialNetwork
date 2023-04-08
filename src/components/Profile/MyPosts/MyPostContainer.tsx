@@ -1,6 +1,6 @@
 import React from 'react';
 import {MyPosts} from "./MyPosts";
-import {addPostAC, updatePostTextAC} from "../../../redux/actionsCreator/actionsForProfile";
+import {addPost, updatePostText} from "../../../redux/actionsCreator/actionsForProfile";
 import {AppStateType} from "../../../redux/redux-store/redux-store";
 import {connect} from "react-redux";
 import {Dispatch} from "redux";
@@ -50,10 +50,10 @@ const mapStateToProps = (state: AppStateType): MapStateToPropsType => {
 const mapDispatchToProps = (dispatch: Dispatch): MapDispatchToPropsType => {
    return {
       addPost: () => {
-         dispatch(addPostAC());
+         dispatch(addPost());
       },
       updateTextPost: (newPostText: string) => {
-         dispatch(updatePostTextAC(newPostText));
+         dispatch(updatePostText(newPostText));
       },
    }
 }
