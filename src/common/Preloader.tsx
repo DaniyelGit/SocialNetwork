@@ -1,9 +1,13 @@
 import React from 'react';
 
-export const Preloader = () => {
+type PreloaderPropsType = {
+   preloader: string
+}
+
+export const Preloader = (props: PreloaderPropsType) => {
    return (
       <div>
-         <img src="../images/svg-loaders/preloader.svg" alt="preloader"/>
+         <img src={props.preloader} alt="preloader"/>
       </div>
    );
 };

@@ -23,6 +23,7 @@ const InitialStateUsersPage = {
    currentPage: 1,
    pageSize: 5,
    totalUsersCount: 0,
+   isFetching: false,
 }
 
 
@@ -57,6 +58,12 @@ export const usersReducer = (state: InitialStateUsersPageType = InitialStateUser
          }
       }
       case "SET-TOTAL-USERS-COUNT": {
+         return {
+            ...state,
+            ...action.payload,
+         }
+      }
+      case "TOGGLE_IS_FETCHING": {
          return {
             ...state,
             ...action.payload,

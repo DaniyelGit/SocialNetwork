@@ -46,10 +46,21 @@ export const setTotalUsersCountAC = (totalCount: number) => {
    } as const;
 }
 
+type toggleIsFetchingACType = ReturnType<typeof toggleIsFetchingAC>;
+export const toggleIsFetchingAC = (isFetching: boolean) => {
+   return {
+      type: 'TOGGLE_IS_FETCHING',
+      payload: {
+         isFetching,
+      }
+   } as const;
+}
+
 
 
 export type actionsUsersType = followUserACType
    | unfollowUserACType
    | setUsersACType
    | changeCurrentPageACType
-   | setTotalUsersCountACType;
+   | setTotalUsersCountACType
+   | toggleIsFetchingACType;
