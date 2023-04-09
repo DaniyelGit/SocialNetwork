@@ -5,8 +5,9 @@ import axios from "axios";
 import {setUserProfile} from "../../redux/actionsCreator/actionsForProfile";
 import {ProfileUserType} from "../../redux/reducer/profile-reducer";
 import {AppStateType} from "../../redux/redux-store/redux-store";
+import {useNavigate, useParams} from "react-router-dom";
 
-
+// old code class component "ProfileContainer"
 /*class ProfileContainer extends React.Component<ProfileContainerPropsType, {}> {
    componentDidMount() {
       axios('https://social-network.samuraijs.com/api/1.0/profile/2')
@@ -23,15 +24,18 @@ import {AppStateType} from "../../redux/redux-store/redux-store";
 }*/
 
 const ProfileContainer = (props: ProfileContainerPropsType) => {
+   const params = useParams<'userId'>();
+   const userId = params.userId || '2';
+
    useEffect(() => {
-      axios('https://social-network.samuraijs.com/api/1.0/profile/2')
+      axios(`https://social-network.samuraijs.com/api/1.0/profile/${userId}`)
          .then(response => {
             props.setUserProfile(response.data);
          });
    }, [])
 
    return (
-     <Profile profileUser={props.profileUser}/>
+      <Profile profileUser={props.profileUser}/>
    );
 }
 
