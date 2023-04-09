@@ -18,8 +18,8 @@ export type ProfileUserLinks = {
    mainLink: string | null
 }
 export type ProfileUserPhotos = {
-   small: string
-   large: string
+   small: string | null
+   large: string | null
 }
 export type ProfileUserType = {
    aboutMe: string
@@ -40,7 +40,7 @@ const initialState = {
       {id: 1, message: 'Hi! How are you ?', likeCount: 23},
       {id: 2, message: "It's my first post", likeCount: 3},
    ] as PostsType[],
-   profileUser: {} as ProfileUserType,
+   profileUser: null as ProfileUserType | null,
    newPostText: '',
 }
 

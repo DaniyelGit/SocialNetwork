@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {Profile} from "./Profile";
 import {connect} from "react-redux";
 import axios from "axios";
@@ -7,7 +7,7 @@ import {ProfileUserType} from "../../redux/reducer/profile-reducer";
 import {AppStateType} from "../../redux/redux-store/redux-store";
 
 
-class ProfileContainer extends React.Component<ProfileContainerPropsType, {}> {
+/*class ProfileContainer extends React.Component<ProfileContainerPropsType, {}> {
    componentDidMount() {
       axios('https://social-network.samuraijs.com/api/1.0/profile/2')
          .then(response => {
@@ -20,19 +20,31 @@ class ProfileContainer extends React.Component<ProfileContainerPropsType, {}> {
         <Profile profileUser={this.props.profileUser}/>
       );
    }
+}*/
+
+const ProfileContainer = (props: ProfileContainerPropsType) => {
+   useEffect(() => {
+      axios('https://social-network.samuraijs.com/api/1.0/profile/2')
+         .then(response => {
+            props.setUserProfile(response.data);
+         });
+   }, [])
+
+   return (
+     <Profile profileUser={props.profileUser}/>
+   );
 }
 
 
-export type MapStateToPropsType = {
-   profileUser: ProfileUserType
-
+type MapStateToPropsType = {
+   profileUser: ProfileUserType | null
 }
 type MapDispatchToPropsType = {
    setUserProfile: (userProfile: ProfileUserType) => void
 };
-export type ProfileContainerPropsType = MapStateToPropsType & MapDispatchToPropsType;
+type ProfileContainerPropsType = MapStateToPropsType & MapDispatchToPropsType;
 
-export const mapStateToProps = (state: AppStateType) => {
+const mapStateToProps = (state: AppStateType): MapStateToPropsType => {
    return {
       profileUser: state.profilePage.profileUser
    }
