@@ -17,7 +17,7 @@ export const App = (props: AppPropsType) => {
    return (
 
       <div className="app-wrapper">
-         {/*<Header/>*/}
+         <Header/>
          <NavBar/>
 
          <div className={"app-wrapper-content"}>
