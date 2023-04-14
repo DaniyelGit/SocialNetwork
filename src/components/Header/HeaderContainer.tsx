@@ -22,7 +22,6 @@ class HeaderContainer extends React.Component<HeaderContainerPropsType, {}> {
    }
 }
 
-
 type MapStateToPropsType = {
    userData: UserDataType,
    isAuth: boolean

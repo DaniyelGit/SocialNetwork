@@ -28,7 +28,7 @@ const ProfileContainer = (props: ProfileContainerPropsType) => {
    const userId = params.userId || '2';
 
    useEffect(() => {
-      axios(`https://social-network.samuraijs.com/api/1.0/profile/${userId}`)
+      axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${userId}`)
          .then(response => {
             props.setUserProfile(response.data);
          });
