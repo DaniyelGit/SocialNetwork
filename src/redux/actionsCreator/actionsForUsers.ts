@@ -56,6 +56,17 @@ export const toggleIsFetching = (isFetching: boolean) => {
    } as const;
 }
 
+type toggleFollowingProgressType = ReturnType<typeof toggleFollowingProgress>;
+export const toggleFollowingProgress = (isFollowing: boolean, userID: number) => {
+   return {
+      type: 'TOGGLE_IS_FOLLOWING_PROGRESS',
+      payload: {
+         isFollowing,
+         userID,
+      }
+   } as const;
+}
+
 
 
 export type actionsUsersType = followUserACType
@@ -63,4 +74,5 @@ export type actionsUsersType = followUserACType
    | setUsersACType
    | changeCurrentPageACType
    | setTotalUsersCountACType
-   | toggleIsFetchingACType;
+   | toggleIsFetchingACType
+   | toggleFollowingProgressType;

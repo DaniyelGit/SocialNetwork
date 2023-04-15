@@ -1,9 +1,6 @@
 import {actionsUsersType} from "../actionsCreator/actionsForUsers";
 
-type LocationType = {
-   city: string
-   country: string
-};
+
 export type UserType = {
    id: number
    name: string
@@ -24,6 +21,7 @@ const InitialStateUsersPage = {
    pageSize: 5,
    totalUsersCount: 0,
    isFetching: false,
+   followingProgress: [] as number[],
 }
 
 
@@ -67,6 +65,14 @@ export const usersReducer = (state: InitialStateUsersPageType = InitialStateUser
          return {
             ...state,
             ...action.payload,
+         }
+      }
+      case "TOGGLE_IS_FOLLOWING_PROGRESS": {
+         return {
+            ...state,
+            followingProgress: action.payload.isFollowing
+               ? [...state.followingProgress, action.payload.userID]
+               : state.followingProgress.filter(userID => userID !== action.payload.userID)
          }
       }
       default: {

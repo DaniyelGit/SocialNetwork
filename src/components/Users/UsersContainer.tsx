@@ -5,7 +5,7 @@ import {UserType} from "../../redux/reducer/users-reducer";
 import {
    changeCurrentPage,
    followUser, setTotalUsersCount,
-   setUsers, toggleIsFetching,
+   setUsers, toggleFollowingProgress, toggleIsFetching,
    unfollowUser
 } from "../../redux/actionsCreator/actionsForUsers";
 import React from "react";
@@ -48,7 +48,9 @@ class UsersContainerAPI extends React.Component<UsersContainerAPIType, {}> {
                currentPage={this.props.currentPage}
                unfollowUser={this.props.unfollowUser}
                followUser={this.props.followUser}
+               followingProgress={this.props.followingProgress}
                changeCurrentPageHandler={this.changeCurrentPageHandler}
+               toggleFollowingProgress={this.props.toggleFollowingProgress}
             />
          </>
       );
@@ -63,6 +65,7 @@ type mapStateToPropsType = {
    pageSize: number
    currentPage: number
    isFetching: boolean
+   followingProgress: number[]
 }
 type mapDispatchToPropsType = {
    followUser: (userID: number) => void
@@ -71,6 +74,7 @@ type mapDispatchToPropsType = {
    changeCurrentPage: (currentPage: number) => void
    setTotalUsersCount: (totalCount: number) => void
    toggleIsFetching: (isFetching: boolean) => void
+   toggleFollowingProgress: (isFetching: boolean, userID: number) => void
 }
 export type UsersContainerAPIType = mapStateToPropsType & mapDispatchToPropsType;
 
@@ -81,6 +85,7 @@ const mapStateToProps = (state: AppStateType): mapStateToPropsType => {
       pageSize: state.usersPage.pageSize,
       currentPage: state.usersPage.currentPage,
       isFetching: state.usersPage.isFetching,
+      followingProgress: state.usersPage.followingProgress,
    }
 }
 
@@ -111,5 +116,5 @@ const mapStateToProps = (state: AppStateType): mapStateToPropsType => {
 export const UsersContainer = connect(mapStateToProps, {
    followUser, unfollowUser, setUsers,
    changeCurrentPage, setTotalUsersCount,
-   toggleIsFetching,
+   toggleIsFetching, toggleFollowingProgress,
 })(UsersContainerAPI)
