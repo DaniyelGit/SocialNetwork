@@ -9,9 +9,10 @@ import axios from "axios";
 class HeaderContainer extends React.Component<HeaderContainerPropsType, {}> {
 
    componentDidMount() {
-      axios('https://social-network.samuraijs.com/api/1.0/auth/me', {
+      axios.get('https://social-network.samuraijs.com/api/1.0/auth/me', {
          withCredentials: true
       }).then(response => {
+         console.log(response)
          const userData: UserDataType = response.data.data;
          this.props.setUserDate(userData)
       })

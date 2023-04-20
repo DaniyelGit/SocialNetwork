@@ -136,7 +136,7 @@ type UsersPropsType = {
    followUser: (userID: number) => void
    unfollowUser: (userID: number) => void
    changeCurrentPageHandler: (currentPage: number) => void
-   toggleFollowingProgress: (isFetching: boolean, userID: number) => void
+   toggleFollowingProgress: (isFollowing: boolean, userID: number) => void
 }
 
 export const Users = (props: UsersPropsType) => {

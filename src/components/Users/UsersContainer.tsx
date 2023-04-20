@@ -25,6 +25,7 @@ class UsersContainerAPI extends React.Component<UsersContainerAPIType, {}> {
          });
    }
 
+
    changeCurrentPageHandler = (currentPage: number) => {
       this.props.toggleIsFetching(true);
       this.props.changeCurrentPage(currentPage);
