@@ -1,6 +1,6 @@
 import {connect} from "react-redux";
 import {Users} from "./Users";
-import {AppStateType} from "../../redux/redux-store/redux-store";
+import {AppStateType} from "../../redux/store/store";
 import {UserType} from "../../redux/reducer/users-reducer";
 import {
    changeCurrentPage,
