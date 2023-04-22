@@ -3,15 +3,12 @@ import {Users} from "./Users";
 import {AppStateType} from "../../redux/store/store";
 import {UserType} from "../../redux/reducer/users-reducer";
 import {
-   changeCurrentPage,
    followUser, getUsers, setTotalUsersCount,
-   setUsers, toggleFollowingProgress, toggleIsFetching,
-   unfollowUser
+   toggleFollowingProgress, unfollowUser
 } from "../../redux/actionsCreator/actionsForUsers";
 import React from "react";
 import {Preloader} from "../../common/Preloader";
 import preloaderSvg from '../../images/svg-loaders/preloader.svg';
-import {usersAPI} from "../../api/api";
 
 
 // Users Container API
@@ -30,13 +27,14 @@ class UsersContainerAPI extends React.Component<UsersContainerAPIType, {}> {
 
 
    changeCurrentPageHandler = (currentPage: number) => {
-      this.props.toggleIsFetching(true);
+      this.props.getUsers(currentPage, this.props.pageSize);
+      /*this.props.toggleIsFetching(true);
       this.props.changeCurrentPage(currentPage);
       usersAPI.getUsers(currentPage, this.props.pageSize)
          .then(response => {
             this.props.setUsers(response.items);
             this.props.toggleIsFetching(false);
-         });
+         });*/
    }
 
    render() {
@@ -75,10 +73,7 @@ type mapStateToPropsType = {
 type mapDispatchToPropsType = {
    followUser: (userID: number) => void
    unfollowUser: (userID: number) => void
-   setUsers: (users: UserType[]) => void
-   changeCurrentPage: (currentPage: number) => void
    setTotalUsersCount: (totalCount: number) => void
-   toggleIsFetching: (isFetching: boolean) => void
    toggleFollowingProgress: (isFetching: boolean, userID: number) => void
    getUsers: (currentPage: number, pageSize: number) => void
 }
@@ -120,8 +115,6 @@ const mapStateToProps = (state: AppStateType): mapStateToPropsType => {
 
 
 export const UsersContainer = connect(mapStateToProps, {
-   followUser, unfollowUser, setUsers,
-   changeCurrentPage, setTotalUsersCount,
-   toggleIsFetching, toggleFollowingProgress,
-   getUsers,
+   followUser, unfollowUser, setTotalUsersCount,
+   toggleFollowingProgress, getUsers,
 })(UsersContainerAPI)

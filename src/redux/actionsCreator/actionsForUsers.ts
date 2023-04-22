@@ -1,6 +1,5 @@
 import {UserType} from "../reducer/users-reducer";
 import {Dispatch} from "redux";
-import axios from "axios";
 import {usersAPI} from "../../api/api";
 
 
@@ -70,7 +69,7 @@ export const toggleFollowingProgress = (isFollowing: boolean, userID: number) =>
    } as const;
 }
 
-export const getUsers = (currentPage: number, pageSize: number) => {
+export const getUsers = (currentPage: number = 1, pageSize: number = 5) => {
    return (dispatch: Dispatch) => {
       dispatch(toggleIsFetching(true));
       usersAPI.getUsers(currentPage, pageSize)
@@ -80,8 +79,33 @@ export const getUsers = (currentPage: number, pageSize: number) => {
             dispatch(setTotalUsersCount(response.totalCount));
          })
    }
-}
+};
 
+export const follow = (userId: number) => {
+   return (dispatch: Dispatch) => {
+      dispatch(toggleFollowingProgress(true, userId));
+      usersAPI.postFollowStatus(userId)
+         .then(response => {
+            if (response.resultCode === 0) {
+               dispatch(followUser(userId));
+            };
+            dispatch(toggleFollowingProgress(false, userId));
+         })
+   }
+};
+
+export const unfollow = (userId: number) => {
+   return (dispatch: Dispatch) => {
+      dispatch(toggleFollowingProgress(true, userId));
+      usersAPI.postFollowStatus(userId)
+         .then(response => {
+            if (response.resultCode === 0) {
+               dispatch(unfollowUser(userId));
+            };
+            dispatch(toggleFollowingProgress(false, userId));
+         })
+   }
+};
 
 
 export type actionsUsersType = followUserACType
