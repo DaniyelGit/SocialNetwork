@@ -1,4 +1,7 @@
 import {UserType} from "../reducer/users-reducer";
+import {Dispatch} from "redux";
+import axios from "axios";
+import {usersAPI} from "../../api/api";
 
 
 type followUserACType = ReturnType<typeof followUser>;
@@ -65,6 +68,18 @@ export const toggleFollowingProgress = (isFollowing: boolean, userID: number) =>
          userID,
       }
    } as const;
+}
+
+export const getUsers = (currentPage: number, pageSize: number) => {
+   return (dispatch: Dispatch) => {
+      dispatch(toggleIsFetching(true));
+      usersAPI.getUsers(currentPage, pageSize)
+         .then(response => {
+            dispatch(toggleIsFetching(false));
+            dispatch(setUsers(response.items));
+            dispatch(setTotalUsersCount(response.totalCount));
+         })
+   }
 }
 
 
