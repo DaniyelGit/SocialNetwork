@@ -4,7 +4,7 @@ import {connect} from "react-redux";
 import {getProfile, setUserProfile} from "../../redux/actionsCreator/actionsForProfile";
 import {ProfileUserType} from "../../redux/reducer/profile-reducer";
 import {AppStateType} from "../../redux/store/store";
-import {useParams} from "react-router-dom";
+import {useParams, Navigate} from "react-router-dom";
 
 // old code class component "ProfileContainer"
 /*class ProfileContainer extends React.Component<ProfileContainerPropsType, {}> {
@@ -28,7 +28,7 @@ const ProfileContainer = (props: ProfileContainerPropsType) => {
 
    useEffect(() => {
       props.getProfile(userId)
-   }, [])
+   }, []);
 
    return (
       <Profile profileUser={props.profileUser}/>
@@ -47,7 +47,7 @@ type ProfileContainerPropsType = MapStateToPropsType & MapDispatchToPropsType;
 
 const mapStateToProps = (state: AppStateType): MapStateToPropsType => {
    return {
-      profileUser: state.profilePage.profileUser
+      profileUser: state.profilePage.profileUser,
    }
 }
 
