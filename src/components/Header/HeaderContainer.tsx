@@ -2,14 +2,14 @@ import React from 'react';
 import {Header} from "./Header";
 import {connect} from "react-redux";
 import {AppStateType} from "../../redux/store/store";
-import {isRegistered, setUserDate} from "../../redux/actionsCreator/actionsForAuth";
+import {getAuthUserData, setUserDate} from "../../redux/actionsCreator/actionsForAuth";
 import {UserDataType} from "../../redux/reducer/authReducer";
 
 
 class HeaderContainer extends React.Component<HeaderContainerPropsType, {}> {
 
    componentDidMount() {
-      this.props.isRegistered();
+      this.props.getAuthUserData();
       /*axios.get('https://social-network.samuraijs.com/api/1.0/auth/me', {
          withCredentials: true
       }).then(response => {
@@ -30,7 +30,7 @@ type MapStateToPropsType = {
 }
 type MapDispatchToPropsType = {
    setUserDate: (userData: UserDataType) => void
-   isRegistered: () => void
+   getAuthUserData: () => void
 }
 
 type HeaderContainerPropsType = MapStateToPropsType & MapDispatchToPropsType;
@@ -43,7 +43,7 @@ const mapStateToProps = (state: AppStateType): MapStateToPropsType => {
 }
 
 export default connect(mapStateToProps, {
-   setUserDate, isRegistered,
+   setUserDate, getAuthUserData,
 })(HeaderContainer);
 
 

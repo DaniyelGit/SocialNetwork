@@ -11,7 +11,7 @@ export const setUserDate = (userDate: UserDataType) => {
    };
 };
 
-export const isRegistered = () => {
+export const getAuthUserData = () => {
    return (dispatch: Dispatch) => {
      authAPI.isRegistered()
         .then(response => {
