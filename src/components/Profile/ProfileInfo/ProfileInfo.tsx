@@ -18,7 +18,7 @@ export const ProfileInfo = (props: ProfileInfoPropsType) => {
    return (
       <div>
          <div>
-            <img src={photos.large ? photos.large : ''} alt="photos"/>
+            <img src={photos.large ? photos.large : 'https://via.placeholder.com/300x300'} alt="photos"/>
          </div>
          ava + description
       </div>

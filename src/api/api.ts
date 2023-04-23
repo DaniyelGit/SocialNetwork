@@ -24,7 +24,25 @@ export const usersAPI = {
          .delete(`follow/${userID}`)
          .then(response => response.data);
    },
-}
+};
+
+export const profileAPI = {
+  getProfile(userID: string) {
+     return socialNetworkAPI
+        .get(`profile/${userID}`);
+  },
+};
+
+export const authAPI = {
+   isRegistered() {
+     return socialNetworkAPI
+        .get(`auth/me`)
+        .then(response => response.data);
+   },
+};
+
+
+
 
 
 /*export const getUsers = (currentPage = 1, pageSize = 5) => {

@@ -16,26 +16,11 @@ import preloaderSvg from '../../images/svg-loaders/preloader.svg';
 class UsersContainerAPI extends React.Component<UsersContainerAPIType, {}> {
    componentDidMount() {
       this.props.getUsers(this.props.currentPage, this.props.pageSize);
-      /*this.props.toggleIsFetching(true);
-      usersAPI.getUsers(this.props.currentPage, this.props.pageSize)
-         .then(response => {
-            console.log(response)
-            this.props.setUsers(response.items);
-            this.props.setTotalUsersCount(response.totalCount);
-            this.props.toggleIsFetching(false);
-         });*/
    }
 
 
    changeCurrentPageHandler = (currentPage: number) => {
       this.props.getUsers(currentPage, this.props.pageSize);
-      /*this.props.toggleIsFetching(true);
-      this.props.changeCurrentPage(currentPage);
-      usersAPI.getUsers(currentPage, this.props.pageSize)
-         .then(response => {
-            this.props.setUsers(response.items);
-            this.props.toggleIsFetching(false);
-         });*/
    }
 
    render() {
