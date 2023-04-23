@@ -3,8 +3,8 @@ import {Dispatch} from "redux";
 import {usersAPI} from "../../api/api";
 
 
-type followUserACType = ReturnType<typeof followUser>;
-export const followUser = (userID: number) => {
+type followUserACType = ReturnType<typeof followSuccess>;
+export const followSuccess = (userID: number) => {
    return {
       type: "FOLLOW-USER",
       payload: userID
@@ -12,8 +12,8 @@ export const followUser = (userID: number) => {
 }
 
 
-type unfollowUserACType = ReturnType<typeof unfollowUser>;
-export const unfollowUser = (userID: number) => {
+type unfollowUserACType = ReturnType<typeof unfollowSuccess>;
+export const unfollowSuccess = (userID: number) => {
    return {
       type: "UNFOLLOW-USER",
       payload: userID
@@ -87,7 +87,7 @@ export const follow = (userId: number) => {
       usersAPI.postFollowStatus(userId)
          .then(response => {
             if (response.resultCode === 0) {
-               dispatch(followUser(userId));
+               dispatch(followSuccess(userId));
             };
             dispatch(toggleFollowingProgress(false, userId));
          })
@@ -97,10 +97,10 @@ export const follow = (userId: number) => {
 export const unfollow = (userId: number) => {
    return (dispatch: Dispatch) => {
       dispatch(toggleFollowingProgress(true, userId));
-      usersAPI.postFollowStatus(userId)
+      usersAPI.deleteFollowStatus(userId)
          .then(response => {
             if (response.resultCode === 0) {
-               dispatch(unfollowUser(userId));
+               dispatch(unfollowSuccess(userId));
             };
             dispatch(toggleFollowingProgress(false, userId));
          })
