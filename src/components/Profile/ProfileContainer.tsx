@@ -6,6 +6,7 @@ import {ProfileUserType} from "../../redux/reducer/profile-reducer";
 import {AppStateType} from "../../redux/store/store";
 import {useParams, Navigate} from "react-router-dom";
 
+
 // old code class component "ProfileContainer"
 /*class ProfileContainer extends React.Component<ProfileContainerPropsType, {}> {
    componentDidMount() {
