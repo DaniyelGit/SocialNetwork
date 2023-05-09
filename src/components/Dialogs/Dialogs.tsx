@@ -1,5 +1,6 @@
 import React, {ChangeEvent} from 'react';
 import s from './Dialogs.module.css';
+import {Navigate} from 'react-router-dom'
 
 import {DialogItem} from "./DialogItem/DialogItem";
 import {MessageItem} from "./MessageItem/MessageItem";
@@ -27,6 +28,10 @@ export const Dialogs = (props: DialogsPropsType) => {
 
    const updateMessageTextHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
       props.updateMessageText(e.currentTarget.value);
+   }
+
+   if (!props.isAuth) {
+      return <Navigate to={'/login'}/>
    }
 
    return (

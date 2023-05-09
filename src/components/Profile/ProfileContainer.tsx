@@ -38,7 +38,8 @@ const ProfileContainer = (props: ProfileContainerPropsType) => {
 
 
 type MapStateToPropsType = {
-   profileUser: ProfileUserType | null
+   profileUser: ProfileUserType | null,
+   isAuth: boolean
 }
 type MapDispatchToPropsType = {
    setUserProfile: (userProfile: ProfileUserType) => void
@@ -49,6 +50,7 @@ type ProfileContainerPropsType = MapStateToPropsType & MapDispatchToPropsType;
 const mapStateToProps = (state: AppStateType): MapStateToPropsType => {
    return {
       profileUser: state.profilePage.profileUser,
+      isAuth: state.auth.isAuth,
    }
 }
 

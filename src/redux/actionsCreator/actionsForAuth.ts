@@ -17,7 +17,7 @@ export const getAuthUserData = () => {
         .then(response => {
            if (response.resultCode === 0) {
              dispatch(setUserDate(response.data));
-           };
+           }
         });
    };
 };
