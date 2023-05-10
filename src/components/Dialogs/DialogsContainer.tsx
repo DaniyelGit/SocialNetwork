@@ -37,19 +37,9 @@ const mapStateToProps = (state: AppStateType): MapStateToPropsType => {
    };
 }
 
-/*const mapDispatchToProps = (dispatch: Dispatch): MapDispatchToPropsType => {
-   return {
-      updateMessageText: (messageText: string) => {
-         dispatch(updateMessageTextAC(messageText));
-      },
-      addMessage: () => {
-         dispatch(addMessageAC());
-      }
-   };
-}*/
 
 const WithRedirect = withAuthRedirect<DialogsPropsType>(Dialogs);
 
 export const DialogsContainer = connect(mapStateToProps, {
-   addMessage,updateMessageText
+   addMessage,updateMessageText,
 })(WithRedirect);

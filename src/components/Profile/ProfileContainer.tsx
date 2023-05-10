@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, {ComponentType, useEffect} from "react";
 import {Profile} from "./Profile";
 import {connect} from "react-redux";
 import {getProfile, setUserProfile} from "../../redux/actionsCreator/actionsForProfile";
@@ -6,6 +6,8 @@ import {ProfileUserType} from "../../redux/reducer/profile-reducer";
 import {AppStateType} from "../../redux/store/store";
 import {useParams} from "react-router-dom";
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
+import {compose} from "redux";
+import {Dialogs} from "../Dialogs/Dialogs";
 
 
 // old code class component "ProfileContainer"
@@ -55,11 +57,20 @@ const mapStateToProps = (state: AppStateType): MapStateToPropsType => {
    }
 }
 
+export default compose<ComponentType>(
+   connect(mapStateToProps, {setUserProfile, getProfile,}),
+   withAuthRedirect
+)(ProfileContainer)
 
-const WithRedirect = withAuthRedirect<ProfileContainerPropsType>(ProfileContainer)
 
-export default connect(mapStateToProps, {
+
+
+// const WithRedirect = withAuthRedirect<ProfileContainerPropsType>(ProfileContainer)
+/*export default connect(mapStateToProps, {
    setUserProfile, getProfile,
-})(WithRedirect);
+})(WithRedirect);*/
 
-
+// сокращенная запись
+/*export default withAuthRedirect<ProfileContainerPropsType>(connect(mapStateToProps, {
+   setUserProfile, getProfile,
+})(ProfileContainer))*/
