@@ -5,6 +5,7 @@ import {connect} from "react-redux";
 import {Dispatch} from "redux";
 import {addMessageAC, updateMessageTextAC} from "../../redux/actionsCreator/actionsForDialogs";
 import {InitialStateDialogsType} from "../../redux/reducer/dialogs-reducer";
+import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 
 /*type DialogsContainerType = {}
 
@@ -49,5 +50,7 @@ const mapDispatchToProps = (dispatch: Dispatch): MapDispatchToPropsType => {
       }
    };
 }
+
+
 
 export const DialogsContainer = connect(mapStateToProps, mapDispatchToProps)(Dialogs)
