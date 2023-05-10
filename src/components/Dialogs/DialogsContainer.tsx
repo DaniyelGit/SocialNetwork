@@ -25,7 +25,6 @@ export const DialogsContainer = (props: DialogsContainerType) => {
 
 type MapStateToPropsType = {
    dialogsState: InitialStateDialogsType
-   isAuth: boolean
 };
 type MapDispatchToPropsType = {
    updateMessageText: (messageText: string) => void
@@ -36,7 +35,6 @@ export type DialogsPropsType = MapStateToPropsType & MapDispatchToPropsType;
 const mapStateToProps = (state: AppStateType): MapStateToPropsType => {
    return {
      dialogsState: state.dialogsPage,
-      isAuth: state.auth.isAuth,
    };
 }
 
@@ -51,6 +49,6 @@ const mapDispatchToProps = (dispatch: Dispatch): MapDispatchToPropsType => {
    };
 }
 
+const WithRedirect = withAuthRedirect<DialogsPropsType>(Dialogs);
 
-
-export const DialogsContainer = connect(mapStateToProps, mapDispatchToProps)(Dialogs)
+export const DialogsContainer = connect(mapStateToProps, mapDispatchToProps)(WithRedirect)
