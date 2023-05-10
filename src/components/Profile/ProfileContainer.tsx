@@ -7,7 +7,7 @@ import {AppStateType} from "../../redux/store/store";
 import {useParams} from "react-router-dom";
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 import {compose} from "redux";
-import {Dialogs} from "../Dialogs/Dialogs";
+
 
 
 // old code class component "ProfileContainer"
@@ -27,7 +27,6 @@ import {Dialogs} from "../Dialogs/Dialogs";
 }*/
 
 const ProfileContainer = (props: ProfileContainerPropsType) => {
-   console.log('ProfileContainerProps ', props)
    const params = useParams<'userId'>();
    const userId = params.userId || '2';
 
@@ -50,7 +49,6 @@ type MapDispatchToPropsType = {
 };
 type ProfileContainerPropsType = MapStateToPropsType & MapDispatchToPropsType;
 
-
 const mapStateToProps = (state: AppStateType): MapStateToPropsType => {
    return {
       profileUser: state.profilePage.profileUser,
@@ -58,9 +56,9 @@ const mapStateToProps = (state: AppStateType): MapStateToPropsType => {
 }
 
 export default compose<ComponentType>(
-   connect(mapStateToProps, {setUserProfile, getProfile,}),
+   connect(mapStateToProps, {setUserProfile, getProfile}),
    withAuthRedirect
-)(ProfileContainer)
+)(ProfileContainer);
 
 
 
