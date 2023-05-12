@@ -28,7 +28,7 @@ export type ProfileUserType = {
    lookingForAJobDescription: string
    fullName: string
    userId: number
-   photos: ProfileUserPhotos
+   photos: ProfileUserPhotos,
 }
 
 

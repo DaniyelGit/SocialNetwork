@@ -42,6 +42,7 @@ const ProfileContainer = (props: ProfileContainerPropsType) => {
 
 type MapStateToPropsType = {
    profileUser: ProfileUserType | null,
+
 }
 type MapDispatchToPropsType = {
    setUserProfile: (userProfile: ProfileUserType) => void
