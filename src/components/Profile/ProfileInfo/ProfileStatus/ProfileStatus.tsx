@@ -5,13 +5,13 @@ export class ProfileStatus extends React.Component<{ status: string }, { modeEdi
       modeEdit: false,
    }
 
-   activateEditMode() {
+   activateEditMode = () => {
       this.setState({
          modeEdit: true
       })
    };
 
-   deactivateEditMode() {
+   deactivateEditMode = () => {
       this.setState({
          modeEdit: false
       })
@@ -26,10 +26,10 @@ export class ProfileStatus extends React.Component<{ status: string }, { modeEdi
                this.state.modeEdit ?
                   <div>
                      <input type="text" value={this.props.status} autoFocus
-                            onBlur={this.deactivateEditMode.bind(this)}/>
+                            onBlur={this.deactivateEditMode}/>
                   </div>
                   : <div>
-                     <span onDoubleClick={this.activateEditMode.bind(this)}>{this.props.status}</span>
+                     <span onDoubleClick={this.activateEditMode}>{this.props.status}</span>
                   </div>
             }
          </>
