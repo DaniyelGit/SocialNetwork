@@ -32,11 +32,11 @@ export const profileAPI = {
          .get(`profile/${userID}`);
    },
    getStatusProfile(userID: string) {
-     return socialNetworkAPI.get(`profile/status/${userID}`);
+      return socialNetworkAPI.get(`profile/status/${userID}`);
    },
-   updateStatusProfile(statusText: string) {
-      return socialNetworkAPI.put(`profile/status`, {statusText});
-   }
+   updateStatusProfile(status: string) {
+      return socialNetworkAPI.put(`profile/status`, {status})
+   },
 };
 
 export const authAPI = {

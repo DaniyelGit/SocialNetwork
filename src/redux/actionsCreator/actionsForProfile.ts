@@ -22,7 +22,7 @@ export const setUserProfile = (userProfile: ProfileUserType) => {
    } as const;
 };
 
-export const setStatus = (statusText: string) => {
+export const setStatusProfile = (statusText: string) => {
    return {
       type: 'SET_STATUS',
       payload: statusText,
@@ -42,7 +42,7 @@ export const getStatusProfile = (userID: string) => {
    return (dispatch: Dispatch) => {
       profileAPI.getStatusProfile(userID)
          .then(response => {
-            dispatch(setStatus(response.data))
+            dispatch(setStatusProfile(response.data))
          });
    };
 };
@@ -52,7 +52,7 @@ export const updateStatusProfile = (statusText: string) => {
       profileAPI.updateStatusProfile(statusText)
          .then(response => {
             if (response.data.resultCode === 0) {
-               dispatch(setStatus(statusText));
+               dispatch(setStatusProfile(statusText));
             }
          });
    };
@@ -61,4 +61,4 @@ export const updateStatusProfile = (statusText: string) => {
 
 export type actionsProfileType = ReturnType<typeof addPost>
    | ReturnType<typeof updatePostText> | ReturnType<typeof setUserProfile>
-   | ReturnType<typeof setStatus>;
+   | ReturnType<typeof setStatusProfile>;

@@ -3,9 +3,12 @@ import {ProfileUserType} from "../../../redux/reducer/profile-reducer";
 import {Preloader} from "../../../common/Preloader";
 import preloaderSvg from '../../../images/svg-loaders/preloader.svg';
 import {ProfileStatus} from "./ProfileStatus/ProfileStatus";
+import {updateStatusProfile} from "../../../redux/actionsCreator/actionsForProfile";
 
 type ProfileInfoPropsType = {
    profileUser: ProfileUserType | null
+   profileStatus: string
+   updateStatusProfile: (statusText: string) => void
 }
 
 export const ProfileInfo = (props: ProfileInfoPropsType) => {
@@ -21,7 +24,7 @@ export const ProfileInfo = (props: ProfileInfoPropsType) => {
          <div>
             <img src={photos.large ? photos.large : 'https://via.placeholder.com/300x300'} alt="photos"/>
          </div>
-         <ProfileStatus status={'Hello my friends'}/>
+         <ProfileStatus profileStatus={props.profileStatus} updateStatusProfile={props.updateStatusProfile}/>
       </div>
    );
 };
