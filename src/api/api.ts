@@ -27,22 +27,25 @@ export const usersAPI = {
 };
 
 export const profileAPI = {
-  getProfile(userID: string) {
-     return socialNetworkAPI
-        .get(`profile/${userID}`);
-  },
+   getProfile(userID: string) {
+      return socialNetworkAPI
+         .get(`profile/${userID}`);
+   },
+   getStatusProfile(userID: string) {
+     return socialNetworkAPI.get(`profile/status/${userID}`);
+   },
+   updateStatusProfile(statusText: string) {
+      return socialNetworkAPI.put(`profile/status`, {statusText});
+   }
 };
 
 export const authAPI = {
    isRegistered() {
-     return socialNetworkAPI
-        .get(`auth/me`)
-        .then(response => response.data);
+      return socialNetworkAPI
+         .get(`auth/me`)
+         .then(response => response.data);
    },
 };
-
-
-
 
 
 /*export const getUsers = (currentPage = 1, pageSize = 5) => {

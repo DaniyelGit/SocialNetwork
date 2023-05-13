@@ -19,7 +19,6 @@ export class ProfileStatus extends React.Component<{ status: string }, { modeEdi
 
 
    render() {
-      console.log(this);
       return (
          <>
             {

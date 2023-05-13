@@ -42,12 +42,13 @@ const initialState = {
    ] as PostsType[],
    profileUser: null as ProfileUserType | null,
    newPostText: '',
+   status: '',
 }
 
 
 export const profileReducer = (state: InitialStateProfileType = initialState, action: actionsProfileType): InitialStateProfileType => {
    switch (action.type) {
-      case "ADD-POST": {
+      case "ADD_POST": {
          const newPost: PostsType = {
             id: state.posts.length + 1,
             message: state.newPostText,
@@ -59,13 +60,19 @@ export const profileReducer = (state: InitialStateProfileType = initialState, ac
             newPostText: '',
          };
       }
-      case "UPDATE-POST-TEXT": {
+      case "UPDATE_POST_TEXT": {
          return {...state, newPostText: action.payload};
       }
-      case "SET_USER-PROFILE": {
+      case "SET_USER_PROFILE": {
          return {
             ...state,
             profileUser: {...action.payload}
+         }
+      }
+      case "SET_STATUS": {
+         return {
+            ...state,
+            status: action.payload
          }
       }
       default: {

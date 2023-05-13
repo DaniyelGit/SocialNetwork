@@ -31,7 +31,8 @@ const ProfileContainer = (props: ProfileContainerPropsType) => {
    const userId = params.userId || '2';
 
    useEffect(() => {
-      props.getProfile(userId)
+      props.getProfile(userId);
+
    }, []);
 
    return (
