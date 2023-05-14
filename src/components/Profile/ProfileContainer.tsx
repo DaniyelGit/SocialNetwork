@@ -36,8 +36,8 @@ const ProfileContainer = (props: ProfileContainerPropsType) => {
    }, []);
 
    return (
-      <Profile profileUser={props.profileUser}
-               profileStatus={props.profileStatus} updateStatusProfile={props.updateStatusProfile}/>
+      <Profile profileUser={props.profileUser} profileStatus={props.profileStatus}
+               updateStatusProfile={props.updateStatusProfile}/>
    );
 }
 

@@ -12,6 +12,7 @@ const mapStateToProps = (state: AppStateType): MapStateToPropsType => {
    }
 }
 
+
 export function withAuthRedirect <T>(Component: ComponentType<T>) {
    const RedirectComponent = (props: MapStateToPropsType) => {
       const {isAuth, ...restProps} = props;
