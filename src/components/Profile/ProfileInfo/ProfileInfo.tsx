@@ -3,7 +3,6 @@ import {ProfileUserType} from "../../../redux/reducer/profile-reducer";
 import {Preloader} from "../../../common/Preloader";
 import preloaderSvg from '../../../images/svg-loaders/preloader.svg';
 import {ProfileStatus} from "./ProfileStatus/ProfileStatus";
-import {updateStatusProfile} from "../../../redux/actionsCreator/actionsForProfile";
 
 type ProfileInfoPropsType = {
    profileUser: ProfileUserType | null

@@ -1,4 +1,4 @@
-import React, {ChangeEvent, createRef} from 'react';
+import React, {ChangeEvent} from 'react';
 
 type LocalStateProfileStatus = {
    modeEdit: boolean,
@@ -46,7 +46,7 @@ export class ProfileStatus extends React.Component<ProfileStatusPropsType, Local
                             onBlur={this.deactivateEditMode} onChange={this.onChangeStatus}/>
                   </div>
                   : <div>
-                     <span onDoubleClick={this.activateEditMode}>{this.props.profileStatus || 'No status'}</span>
+                     <span onDoubleClick={this.activateEditMode}>{this.props.profileStatus || 'Что у вас нового?'}</span>
                   </div>
             }
          </>
