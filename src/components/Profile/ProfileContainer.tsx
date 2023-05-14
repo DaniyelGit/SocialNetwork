@@ -8,8 +8,6 @@ import {useParams} from "react-router-dom";
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 import {compose} from "redux";
 
-
-
 // old code class component "ProfileContainer"
 /*class ProfileContainer extends React.Component<ProfileContainerPropsType, {}> {
    componentDidMount() {

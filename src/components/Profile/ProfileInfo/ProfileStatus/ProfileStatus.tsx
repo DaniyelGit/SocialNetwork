@@ -35,6 +35,14 @@ export class ProfileStatus extends React.Component<ProfileStatusPropsType, Local
       })
    }
 
+   componentDidUpdate(prevProps: ProfileStatusPropsType, prevState: LocalStateProfileStatus) {
+      if (prevProps.profileStatus !== this.props.profileStatus) {
+         this.setState({
+            status: this.props.profileStatus
+         });
+      }
+   };
+
 
    render() {
       return (
