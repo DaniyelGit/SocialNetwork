@@ -5,6 +5,7 @@ import {DialogItem} from "./DialogItem/DialogItem";
 import {MessageItem} from "./MessageItem/MessageItem";
 
 import {DialogsPropsType} from "./DialogsContainer";
+import {Field, InjectedFormProps, reduxForm} from "redux-form";
 
 
 export const Dialogs = (props: DialogsPropsType) => {
@@ -23,14 +24,14 @@ export const Dialogs = (props: DialogsPropsType) => {
       return <MessageItem key={item.id} message={item.message}/>
    });
 
-   const addMessageHandler = () => {
-      props.addMessage();
-   }
 
    const updateMessageTextHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
       props.updateMessageText(e.currentTarget.value);
    }
 
+   const addNewMessage = (formData: FormDataType) => {
+      props.addMessage(formData.newMessageBody);
+   }
 
    return (
       <div className={s.dialogs}>
@@ -40,19 +41,33 @@ export const Dialogs = (props: DialogsPropsType) => {
 
          <div className={s.messages}>
             <div>{mappedMessagesElements}</div>
-            <div>
-               <div>
-                  <textarea
-                     value={newMessageText}
-                     placeholder={'Enter your message'}
-                     onChange={updateMessageTextHandler}
-                  />
-               </div>
-               <div>
-                  <button onClick={addMessageHandler}>Send</button>
-               </div>
-            </div>
          </div>
+
+         <AddMessageFromRedux onSubmit={addNewMessage}/>
       </div>
    );
 };
+
+
+const AddMessageForm = (props: InjectedFormProps<FormDataType, IProps>) => {
+   return (
+      <form onSubmit={props.handleSubmit}>
+         <div>
+            <Field type="text" component="textarea" name="newMessageBody" placeholder="Enter your message"/>
+         </div>
+         <div>
+            <button>send</button>
+         </div>
+      </form>
+   )
+};
+
+const AddMessageFromRedux = reduxForm<FormDataType, IProps>({
+   form: "dialogAddMessageForm"
+})(AddMessageForm);
+
+type FormDataType = {
+   newMessageBody: string
+};
+
+interface IProps {}

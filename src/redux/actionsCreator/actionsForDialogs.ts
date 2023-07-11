@@ -1,16 +1,9 @@
-export const updateMessageText = (messageText: string) => {
-   return {
-      type: "UPDATE_MESSAGE-TEXT",
-      payload: messageText
-   } as const
-}
-
-export const addMessage = () => {
+export const addMessage = (newMessageBody: string) => {
    return {
       type: "ADD-NEW-MESSAGE",
+      newMessageBody,
    } as const
 }
 
 
-export type actionsDialogsType = ReturnType<typeof updateMessageText>
-| ReturnType<typeof addMessage>;
+export type actionsDialogsType = ReturnType<typeof addMessage>;

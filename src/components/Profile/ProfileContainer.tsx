@@ -8,22 +8,6 @@ import {useParams} from "react-router-dom";
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 import {compose} from "redux";
 
-// old code class component "ProfileContainer"
-/*class ProfileContainer extends React.Component<ProfileContainerPropsType, {}> {
-   componentDidMount() {
-      axios('https://social-network.samuraijs.com/api/1.0/profile/2')
-         .then(response => {
-            this.props.setUserProfile(response.data);
-         });
-   }
-
-   render() {
-      return (
-        <Profile profileUser={this.props.profileUser}/>
-      );
-   }
-}*/
-
 const ProfileContainer = (props: ProfileContainerPropsType) => {
    const params = useParams<'userId'>();
    const userId = params.userId || '22597';

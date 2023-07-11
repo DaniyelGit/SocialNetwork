@@ -23,29 +23,33 @@ export const DialogsContainer = (props: DialogsContainerType) => {
    );
 };*/ // самописный контейнер
 
+const mapStateToProps = (state: AppStateType): MapStateToPropsType => {
+   return {
+     dialogsState: state.dialogsPage,
+   };
+};
+
+export default compose<ComponentType>(
+   withAuthRedirect,
+   connect(mapStateToProps, {addMessage,updateMessageText}),
+)(Dialogs);
+
+
+//types
 type MapStateToPropsType = {
    dialogsState: InitialStateDialogsType
 };
 type MapDispatchToPropsType = {
    updateMessageText: (messageText: string) => void
-   addMessage: () => void
+   addMessage: (newMessageBody: string) => void
 };
+
 export type DialogsPropsType = MapStateToPropsType & MapDispatchToPropsType;
 
-const mapStateToProps = (state: AppStateType): MapStateToPropsType => {
-   return {
-     dialogsState: state.dialogsPage,
-   };
-}
 
-export default compose<ComponentType>(
-   connect(mapStateToProps, {addMessage,updateMessageText}),
-   withAuthRedirect
-)(Dialogs);
 
-/*
-const WithRedirect = withAuthRedirect<DialogsPropsType>(Dialogs);
 
+/*const WithRedirect = withAuthRedirect<DialogsPropsType>(Dialogs);
 export const DialogsContainer = connect(mapStateToProps, {
    addMessage,updateMessageText,
 })(WithRedirect);*/

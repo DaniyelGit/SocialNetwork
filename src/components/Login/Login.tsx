@@ -1,9 +1,10 @@
 import React from 'react';
 import {Field, InjectedFormProps, reduxForm} from "redux-form";
 
-type LoginPropsType = {}
+type LoginPropsType = {
 
-// тип для других пропсов если понадобится
+}
+
 interface IProps {
 
 }
@@ -26,6 +27,8 @@ export const Login = (props: LoginPropsType) => {
       </div>
    );
 };
+
+
 
 export const LoginForm: React.FC<InjectedFormProps<FormDataType, IProps>> = (props) => {
    return (

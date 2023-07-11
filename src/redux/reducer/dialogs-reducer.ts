@@ -25,22 +25,17 @@ const initialState = {
       {id: 2, message: 'How is your it-kamasutra'},
       {id: 3, message: 'Yo'},
    ] as MessagesType[],
-   newMessageText: '',
 }
 
 export const dialogsReducer = (state: InitialStateDialogsType = initialState, action: actionsDialogsType): InitialStateDialogsType => {
    switch (action.type) {
-      case 'UPDATE_MESSAGE-TEXT': {
-         return {...state, newMessageText: action.payload};
-      }
       case 'ADD-NEW-MESSAGE': {
          const newMessage: MessagesType = {
             id: state.messages.length + 1,
-            message: state.newMessageText
-         }
+            message: action.newMessageBody
+         };
          return {...state,
             messages: [...state.messages, newMessage],
-            newMessageText: '',
          };
       }
       default: {
