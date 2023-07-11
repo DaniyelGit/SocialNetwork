@@ -2,7 +2,7 @@ import React, {ComponentType} from 'react';
 import {Dialogs} from "./Dialogs";
 import {AppStateType} from "../../redux/store/store";
 import {connect} from "react-redux";
-import {addMessage, updateMessageText} from "../../redux/actionsCreator/actionsForDialogs";
+import {addMessage} from "../../redux/actionsCreator/actionsForDialogs";
 import {InitialStateDialogsType} from "../../redux/reducer/dialogs-reducer";
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 import {compose} from "redux";
@@ -31,7 +31,7 @@ const mapStateToProps = (state: AppStateType): MapStateToPropsType => {
 
 export default compose<ComponentType>(
    withAuthRedirect,
-   connect(mapStateToProps, {addMessage,updateMessageText}),
+   connect(mapStateToProps, {addMessage}),
 )(Dialogs);
 
 
@@ -40,7 +40,6 @@ type MapStateToPropsType = {
    dialogsState: InitialStateDialogsType
 };
 type MapDispatchToPropsType = {
-   updateMessageText: (messageText: string) => void
    addMessage: (newMessageBody: string) => void
 };
 

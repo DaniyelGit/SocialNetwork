@@ -13,7 +13,6 @@ export const Dialogs = (props: DialogsPropsType) => {
    const {
       dialogs: dialogsData,
       messages: messageData,
-      newMessageText,
    } = props.dialogsState
 
    const mappedDialogsElements = dialogsData.map(item => {
@@ -24,10 +23,6 @@ export const Dialogs = (props: DialogsPropsType) => {
       return <MessageItem key={item.id} message={item.message}/>
    });
 
-
-   const updateMessageTextHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
-      props.updateMessageText(e.currentTarget.value);
-   }
 
    const addNewMessage = (formData: FormDataType) => {
       props.addMessage(formData.newMessageBody);
