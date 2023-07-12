@@ -46,8 +46,6 @@ type MapDispatchToPropsType = {
 export type DialogsPropsType = MapStateToPropsType & MapDispatchToPropsType;
 
 
-
-
 /*const WithRedirect = withAuthRedirect<DialogsPropsType>(Dialogs);
 export const DialogsContainer = connect(mapStateToProps, {
    addMessage,updateMessageText,

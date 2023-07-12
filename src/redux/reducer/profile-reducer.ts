@@ -41,7 +41,6 @@ const initialState = {
       {id: 2, message: "It's my first post", likeCount: 3},
    ] as PostsType[],
    profileUser: null as ProfileUserType | null,
-   newPostText: '',
    status: '',
 }
 
@@ -51,17 +50,13 @@ export const profileReducer = (state: InitialStateProfileType = initialState, ac
       case "ADD_POST": {
          const newPost: PostsType = {
             id: state.posts.length + 1,
-            message: state.newPostText,
+            message: action.newPostBody,
             likeCount: 0,
          };
          return {
             ...state,
             posts: [...state.posts, newPost],
-            newPostText: '',
          };
-      }
-      case "UPDATE_POST_TEXT": {
-         return {...state, newPostText: action.payload};
       }
       case "SET_USER_PROFILE": {
          return {

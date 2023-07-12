@@ -2,16 +2,10 @@ import {ProfileUserType} from "../reducer/profile-reducer";
 import {Dispatch} from "redux";
 import {profileAPI, socialNetworkAPI} from "../../api/api";
 
-export const addPost = () => {
+export const addPost = (newPostBody: string) => {
    return {
       type: "ADD_POST",
-   } as const
-};
-
-export const updatePostText = (postText: string) => {
-   return {
-      type: "UPDATE_POST_TEXT",
-      payload: postText
+      newPostBody,
    } as const
 };
 
@@ -61,5 +55,5 @@ export const updateStatusProfile = (statusText: string) => {
 
 
 export type actionsProfileType = ReturnType<typeof addPost>
-   | ReturnType<typeof updatePostText> | ReturnType<typeof setUserProfile>
+   | ReturnType<typeof setUserProfile>
    | ReturnType<typeof setStatusProfile>;

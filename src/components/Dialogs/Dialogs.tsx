@@ -1,4 +1,4 @@
-import React, {ChangeEvent} from 'react';
+import React from 'react';
 import s from './Dialogs.module.css';
 
 import {DialogItem} from "./DialogItem/DialogItem";
@@ -38,7 +38,7 @@ export const Dialogs = (props: DialogsPropsType) => {
             <div>{mappedMessagesElements}</div>
          </div>
 
-         <AddMessageFromRedux onSubmit={addNewMessage}/>
+         <AddMessageFormRedux onSubmit={addNewMessage}/>
       </div>
    );
 };
@@ -57,7 +57,7 @@ const AddMessageForm = (props: InjectedFormProps<FormDataType, IProps>) => {
    )
 };
 
-const AddMessageFromRedux = reduxForm<FormDataType, IProps>({
+const AddMessageFormRedux = reduxForm<FormDataType, IProps>({
    form: "dialogAddMessageForm"
 })(AddMessageForm);
 
