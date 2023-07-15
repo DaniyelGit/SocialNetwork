@@ -22,7 +22,7 @@ type MapStateToPropsType = {
    isAuth: boolean
 }
 type MapDispatchToPropsType = {
-   setUserDate: (userData: UserDataType) => void
+   setUserDate: (userData: UserDataType, isAuth: boolean) => void
    getAuthUserData: () => void
 }
 

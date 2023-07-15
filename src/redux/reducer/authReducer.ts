@@ -23,9 +23,9 @@ export const authReducer = (state: InitialStateType = initialState, action: Acti
          return {
             ...state,
             userData: {
-               ...action.payload
+               ...action.payload.userDate
             },
-            isAuth: true
+            isAuth: action.payload.isAuth
          };
       }
       default: {

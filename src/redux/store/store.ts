@@ -1,10 +1,10 @@
-import {applyMiddleware, combineReducers, createStore} from "redux";
+import {AnyAction, applyMiddleware, combineReducers, createStore} from "redux";
 import {profileReducer} from "../reducer/profile-reducer";
 import {dialogsReducer} from "../reducer/dialogs-reducer";
 import {usersReducer} from "../reducer/users-reducer";
 import {authReducer} from "../reducer/authReducer";
 import {composeWithDevTools} from 'redux-devtools-extension';
-import thunk from 'redux-thunk';
+import thunk, {ThunkAction} from 'redux-thunk';
 import { reducer as formReducer } from 'redux-form';
 
 
@@ -23,6 +23,10 @@ export const store = createStore(rootReducer, composeWithDevTools(applyMiddlewar
 export type AppStateType = ReturnType<typeof rootReducer>;
 // type for store
 export type StoreType = typeof store;
+
+export type AppThunkType<ReturnType = void> = ThunkAction<ReturnType, AppStateType, unknown, AnyAction>;
+
+
 
 // @ts-ignore
 window.store = store;

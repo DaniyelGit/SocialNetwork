@@ -2,24 +2,14 @@ import React from 'react';
 import {Field, InjectedFormProps, reduxForm} from "redux-form";
 import {Input} from "../../common/FormsControls/FormsControls";
 import {requiredField} from "../../utils/validators";
+import {connect} from "react-redux";
+import {logIn} from "../../redux/actionsCreator/actionsForAuth";
 
-type LoginPropsType = {
 
-}
-
-interface IProps {
-
-}
-
-type FormDataType = {
-   login: string;
-   password: string;
-   rememberMe: boolean;
-}
 
 export const Login = (props: LoginPropsType) => {
    const onSubmit = (formData: FormDataType) => {
-      console.log(formData)
+      props.logIn(formData);
    }
 
    return (
@@ -30,16 +20,14 @@ export const Login = (props: LoginPropsType) => {
    );
 };
 
-
-
 export const LoginForm: React.FC<InjectedFormProps<FormDataType, IProps>> = (props) => {
    return (
       <form onSubmit={props.handleSubmit}>
          <div>
-            <Field type='text' name='login' placeholder='Login' component={Input} validate={[requiredField]}/>
+            <Field type='text' name='email' placeholder='Login' component={Input} validate={[requiredField]}/>
          </div>
          <div>
-            <Field type='text' name='password' placeholder='Password' component={Input} validate={[requiredField]}/>
+            <Field type='password' name='password' placeholder='Password' component={Input} validate={[requiredField]}/>
          </div>
          <div>
             <Field type='checkbox' name='rememberMe' component={Input}/>
@@ -54,3 +42,22 @@ export const LoginForm: React.FC<InjectedFormProps<FormDataType, IProps>> = (pro
 const LoginReduxForm = reduxForm<FormDataType, IProps>({
    form: 'login'
 })(LoginForm);
+
+export const LoginContainer =  connect (null, {logIn})(Login);
+
+
+// types
+
+type LoginPropsType = {
+   logIn: (formData: FormDataType) => void
+}
+
+interface IProps {
+
+}
+
+export type FormDataType = {
+   email: string;
+   password: string;
+   rememberMe: boolean;
+}

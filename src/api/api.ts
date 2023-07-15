@@ -1,4 +1,5 @@
 import axios from "axios";
+import {FormDataType} from "../components/Login/Login";
 
 export const socialNetworkAPI = axios.create({
    withCredentials: true,
@@ -45,6 +46,12 @@ export const authAPI = {
          .get(`auth/me`)
          .then(response => response.data);
    },
+   logIn(formData: FormDataType) {
+      return socialNetworkAPI.post(`auth/login`, formData)
+   },
+   logOut() {
+      return socialNetworkAPI.delete(`auth/login`);
+   }
 };
 
 
