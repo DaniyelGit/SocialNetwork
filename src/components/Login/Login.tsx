@@ -7,7 +7,7 @@ import {logIn} from "../../redux/actionsCreator/actionsForAuth";
 
 
 
-export const Login = (props: LoginPropsType) => {
+const Login = (props: LoginPropsType) => {
    const onSubmit = (formData: FormDataType) => {
       props.logIn(formData);
    }
@@ -43,7 +43,7 @@ const LoginReduxForm = reduxForm<FormDataType, IProps>({
    form: 'login'
 })(LoginForm);
 
-export const LoginContainer =  connect (null, {logIn})(Login);
+export default connect (null, {logIn})(Login);
 
 
 // types
