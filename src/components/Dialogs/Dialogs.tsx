@@ -6,6 +6,9 @@ import {MessageItem} from "./MessageItem/MessageItem";
 
 import {DialogsPropsType} from "./DialogsContainer";
 import {Field, InjectedFormProps, reduxForm} from "redux-form";
+import {maxLengthCreator, requiredField} from "../../utils/validators";
+import {Textarea} from "../../common/FormsControls/FormsControls";
+
 
 
 export const Dialogs = (props: DialogsPropsType) => {
@@ -43,12 +46,15 @@ export const Dialogs = (props: DialogsPropsType) => {
    );
 };
 
+const maxLength50 = maxLengthCreator(50);
 
-const AddMessageForm = (props: InjectedFormProps<FormDataType, IProps>) => {
+const AddMessageForm = (props: AddMessageFormProps) => {
    return (
       <form onSubmit={props.handleSubmit}>
          <div>
-            <Field type="text" component="textarea" name="newMessageBody" placeholder="Enter your message"/>
+            <Field type="text" component={Textarea} name="newMessageBody"
+                   placeholder="Enter your message" validate={[requiredField, maxLength50]}
+            />
          </div>
          <div>
             <button>send</button>
@@ -66,3 +72,5 @@ type FormDataType = {
 };
 
 interface IProps {}
+
+interface AddMessageFormProps extends InjectedFormProps<FormDataType, IProps> {}
