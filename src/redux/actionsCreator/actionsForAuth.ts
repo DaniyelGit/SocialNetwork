@@ -3,6 +3,7 @@ import {Dispatch} from "redux";
 import {authAPI} from "../../api/api";
 import {AppThunkType} from "../store/store";
 import {FormDataType} from "../../components/Login/Login";
+import {stopSubmit} from "redux-form";
 
 type SetUserDateType = ReturnType<typeof setUserDate>;
 
@@ -35,6 +36,9 @@ export const logIn = (formData: FormDataType): AppThunkType => (dispatch) => {
       .then(response => {
          if (response.data.resultCode === 0) {
             dispatch(getAuthUserData())
+         } else {
+            const errorMessage = response.data.messages.length > 0 ? response.data.messages[0] : 'Some error';
+            dispatch(stopSubmit('login', {_error: errorMessage}));
          }
       })
 };

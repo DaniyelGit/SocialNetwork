@@ -10,7 +10,7 @@ import {compose} from "redux";
 
 const ProfileContainer = (props: ProfileContainerPropsType) => {
    const params = useParams<'userId'>();
-   const userId = params.userId || '22597';
+   const userId = params.userId || String(props.userId);
 
    useEffect(() => {
       props.getProfile(userId);
@@ -21,25 +21,14 @@ const ProfileContainer = (props: ProfileContainerPropsType) => {
       <Profile profileUser={props.profileUser} profileStatus={props.profileStatus}
                updateStatusProfile={props.updateStatusProfile}/>
    );
-}
-
-
-type MapStateToPropsType = {
-   profileUser: ProfileUserType | null,
-   profileStatus: string,
-
-}
-type MapDispatchToPropsType = {
-   getProfile: (userID: string) => void
-   getStatusProfile: (userID: string) => void
-   updateStatusProfile: (statusText: string) => void
 };
-type ProfileContainerPropsType = MapStateToPropsType & MapDispatchToPropsType;
 
 const mapStateToProps = (state: AppStateType): MapStateToPropsType => {
    return {
       profileUser: state.profilePage.profileUser,
       profileStatus: state.profilePage.status,
+      userId: state.auth.userData.id,
+      isAuth: state.auth.isAuth
    }
 }
 
@@ -49,6 +38,21 @@ export default compose<ComponentType>(
 )(ProfileContainer);
 
 
+// types
+
+type MapStateToPropsType = {
+   profileUser: ProfileUserType | null,
+   profileStatus: string
+   userId: number | null
+   isAuth: boolean
+}
+
+type MapDispatchToPropsType = {
+   getProfile: (userID: string) => void
+   getStatusProfile: (userID: string) => void
+   updateStatusProfile: (statusText: string) => void
+};
+type ProfileContainerPropsType = MapStateToPropsType & MapDispatchToPropsType;
 
 
 // const WithRedirect = withAuthRedirect<ProfileContainerPropsType>(ProfileContainer)
