@@ -2,7 +2,6 @@ import React from 'react';
 import {MyPostsContainer} from "./MyPosts/MyPostContainer";
 import {ProfileInfo} from "./ProfileInfo/ProfileInfo";
 import {ProfileUserType} from "../../redux/reducer/profile-reducer";
-import {updateStatusProfile} from "../../redux/actionsCreator/actionsForProfile";
 
 
 

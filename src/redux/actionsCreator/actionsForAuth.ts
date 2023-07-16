@@ -43,10 +43,10 @@ export const logOut = (): AppThunkType => (dispatch => {
    authAPI.logOut()
       .then(response => {
          if (response.data.resultCode === 0) {
-            const emptyUser = {
+            const emptyUser: UserDataType = {
                id: null,
                login: null,
-               email: null
+               email: null,
             };
             dispatch(setUserDate(emptyUser, false))
          }
