@@ -20,9 +20,9 @@ export const Header = (props: HeaderPropsType) => {
          {
             props.isAuth
                ? <div>{props.userData.login} <button onClick={logOutHandler}>LogOut</button></div>
-               : <div className={s.loginBlock}>
-                  <NavLink to={'/login'}>Login</NavLink>
-               </div>
+               :  <div className={s.loginBlock}>
+                     <NavLink to={'/login'}>Login</NavLink>
+                  </div>
          }
       </header>
    );

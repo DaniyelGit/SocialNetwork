@@ -42,8 +42,7 @@ export const profileAPI = {
 
 export const authAPI = {
    isRegistered() {
-      return socialNetworkAPI
-         .get(`auth/me`)
+      return socialNetworkAPI.get(`auth/me`)
          .then(response => response.data);
    },
    logIn(formData: FormDataType) {
