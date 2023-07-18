@@ -21,7 +21,7 @@ export const setUserDate = (userDate: UserDataType, isAuth: boolean) => {
 // thunks
 export const getAuthUserData = () => {
    return (dispatch: Dispatch) => {
-     authAPI.isRegistered()
+     return authAPI.isRegistered()
         .then(response => {
            if (response.resultCode === 0) {
              dispatch(setUserDate(response.data, true));

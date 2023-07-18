@@ -39,7 +39,6 @@ export default compose<ComponentType>(
 
 
 // types
-
 type MapStateToPropsType = {
    profileUser: ProfileUserType | null,
    profileStatus: string
