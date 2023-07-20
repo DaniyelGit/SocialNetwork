@@ -10,6 +10,7 @@ import {
 import React from "react";
 import {Preloader} from "../../common/Preloader";
 import preloaderSvg from '../../images/svg-loaders/preloader.svg';
+import {getUsersFromState} from "../../utils/selectors/user-selectors";
 
 
 // Users Container API
@@ -67,7 +68,7 @@ export type UsersContainerAPIType = mapStateToPropsType & mapDispatchToPropsType
 
 const mapStateToProps = (state: AppStateType): mapStateToPropsType => {
    return {
-      usersState: state.usersPage.users,
+      usersState: getUsersFromState(state),
       totalUsersCount: state.usersPage.totalUsersCount,
       pageSize: state.usersPage.pageSize,
       currentPage: state.usersPage.currentPage,
