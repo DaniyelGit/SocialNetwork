@@ -1,48 +1,40 @@
-import React, {DetailedHTMLProps, InputHTMLAttributes, ReactElement, ReactNode, TextareaHTMLAttributes} from "react";
+import React, {DetailedHTMLProps, InputHTMLAttributes, TextareaHTMLAttributes} from "react";
 import s from './FormsControls.module.css';
-import {WrappedFieldInputProps, WrappedFieldMetaProps} from "redux-form/lib/Field";
+import {WrappedFieldMetaProps} from "redux-form/lib/Field";
 
 
-export const FormControl = ({meta, children, ...restProps}: FormControlType) => {
+export const FormControl = ({input, meta, FormType, ...restProps}: FormControlType) => {
+   console.log(meta)
    const hasError = meta.touched && meta.error;
+   const finalInputClass = `${s.formControl} ${hasError ? s.error : ''}`;
 
    return (
-      <div className={`${s.formControl} ${hasError ? s.error : ''}`}>
-         <div>
-            {children}
-         </div>
+      <div className={finalInputClass}>
+         <FormType {...input} {...restProps}/>
          {hasError && <span>{meta.error}</span>}
       </div>
    );
 };
 
-export const Textarea = (props: FormElementType<TextareaHTMLAttributes<HTMLTextAreaElement>, HTMLTextAreaElement>) => {
-   const {input, meta, ...restProps} = props;
-
+export const Textarea = ({...props}: FormControlType) => {
    return (
-     <FormControl meta={meta}>
-        <textarea {...input} {...restProps}/>
-     </FormControl>
+     <FormControl {...props} FormType='textarea'/>
    );
 };
 
-export const Input = (props: FormElementType<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>) => {
-   const {input, meta, ...restProps} = props;
-
+export const Input = ({...props}: FormControlType) => {
    return (
-      <FormControl meta={meta}>
-         <input {...input} {...restProps}/>
-      </FormControl>
+      <FormControl {...props} FormType='input'/>
    );
 };
+
+
+type DefaultInputPropsType = DetailedHTMLProps<TextareaHTMLAttributes<HTMLTextAreaElement>, HTMLTextAreaElement>;
 
 
 type FormControlType = {
+   input: DefaultInputPropsType
    meta: WrappedFieldMetaProps
-   children: React.ReactNode
+   FormType: string
 };
 
-type FormElementType<A,E> = DetailedHTMLProps<A, E> & {
-   input: WrappedFieldInputProps
-   meta: WrappedFieldMetaProps
-};
