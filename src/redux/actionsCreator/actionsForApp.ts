@@ -14,7 +14,7 @@ export const initializeApp = (): AppThunkType => (dispatch) => {
       .then(() => {
          dispatch(setInitializedSuccess());
       })
-}
+};
 
 // types
 export type ActionsAppType = ReturnType<typeof setInitializedSuccess>;
