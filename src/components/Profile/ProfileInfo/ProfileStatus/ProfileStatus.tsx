@@ -1,16 +1,6 @@
 import React, {ChangeEvent} from 'react';
 
-type LocalStateProfileStatus = {
-   modeEdit: boolean,
-   status: string
-};
-
-type ProfileStatusPropsType = {
-   profileStatus: string
-   updateStatusProfile: (statusText: string) => void
-}
-
-export class ProfileStatus extends React.Component<ProfileStatusPropsType, LocalStateProfileStatus> {
+/*export class ProfileStatus extends React.Component<ProfileStatusPropsType, LocalStateProfileStatus> {
    state = {
       modeEdit: false,
       status: this.props.profileStatus,
@@ -60,4 +50,51 @@ export class ProfileStatus extends React.Component<ProfileStatusPropsType, Local
          </>
       );
    }
+}*/
+
+export const ProfileStatus = ({profileStatus, updateStatusProfile}: ProfileStatusPropsType) => {
+
+   const [status, setStatus] = React.useState<string>(profileStatus);
+   const [editMode, setEditMode] = React.useState<boolean>(false);
+
+   const onChangeStatus = (e: ChangeEvent<HTMLInputElement>) => {
+      setStatus(e.currentTarget.value);
+   };
+
+   const deactivateEditMode = () => {
+      setEditMode(false);
+      updateStatusProfile(status);
+   };
+
+   const activateEditMode = () => {
+      setEditMode(true);
+   }
+
+   return (
+      <>
+         {
+            editMode ?
+               <div>
+                  <input type="text" value={status} autoFocus
+                         onBlur={deactivateEditMode} onChange={onChangeStatus}/>
+               </div>
+               : <div>
+                  <span onDoubleClick={activateEditMode}>{profileStatus || 'Что у вас нового?'}</span>
+               </div>
+         }
+      </>
+   );
+
+};
+
+// types
+
+type LocalStateProfileStatus = {
+   modeEdit: boolean,
+   status: string
+};
+
+type ProfileStatusPropsType = {
+   profileStatus: string
+   updateStatusProfile: (statusText: string) => void
 }

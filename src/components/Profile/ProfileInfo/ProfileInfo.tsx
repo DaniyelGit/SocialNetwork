@@ -4,6 +4,7 @@ import {Preloader} from "../../../common/Preloader";
 import preloaderSvg from '../../../images/svg-loaders/preloader.svg';
 import {ProfileStatus} from "./ProfileStatus/ProfileStatus";
 
+
 type ProfileInfoPropsType = {
    profileUser: ProfileUserType | null
    profileStatus: string
