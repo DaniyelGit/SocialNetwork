@@ -1,12 +1,5 @@
 import {ActionsAuthType} from "../actionsCreator/actionsForAuth";
 
-export type UserDataType = {
-   id: null | number,
-   login: null | string,
-   email: null | string,
-}
-
-export type InitialStateType = typeof initialState;
 
 const initialState = {
    userData: {
@@ -33,3 +26,12 @@ export const authReducer = (state: InitialStateType = initialState, action: Acti
       }
    }
 }
+
+
+export type UserDataType = {
+   id: null | number,
+   login: null | string,
+   email: null | string,
+}
+
+export type InitialStateType = typeof initialState;

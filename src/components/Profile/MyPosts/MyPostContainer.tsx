@@ -33,14 +33,6 @@ export const MyPostContainer = (props: MyPostContainerPropsType) => {
    );
 };*/ // самописный контейнер
 
-type MapStateToPropsType = {
-   profileState: InitialStateProfileType
-}
-type MapDispatchToPropsType = {
-   addPost: (newPostBody: string) => void
-}
-export type MyPostsPropsType = MapStateToPropsType & MapDispatchToPropsType;
-
 const mapStateToProps = (state: AppStateType): MapStateToPropsType => {
    return {
       profileState: state.profilePage,
@@ -55,3 +47,12 @@ const mapDispatchToProps = (dispatch: Dispatch): MapDispatchToPropsType => {
 }
 
 export const MyPostsContainer = connect(mapStateToProps, mapDispatchToProps)(MyPosts);
+
+type MapStateToPropsType = {
+   profileState: InitialStateProfileType
+}
+type MapDispatchToPropsType = {
+   addPost: (newPostBody: string) => void
+}
+export type MyPostsPropsType = MapStateToPropsType & MapDispatchToPropsType;
+

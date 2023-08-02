@@ -4,7 +4,6 @@ import {WrappedFieldMetaProps} from "redux-form/lib/Field";
 
 
 export const FormControl = ({input, meta, FormType, ...restProps}: FormControlType) => {
-   console.log(meta)
    const hasError = meta.touched && meta.error;
    const finalInputClass = `${s.formControl} ${hasError ? s.error : ''}`;
 

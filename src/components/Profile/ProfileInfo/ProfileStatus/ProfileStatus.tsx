@@ -1,4 +1,4 @@
-import React, {ChangeEvent} from 'react';
+import React, {ChangeEvent, useEffect} from 'react';
 
 /*export class ProfileStatus extends React.Component<ProfileStatusPropsType, LocalStateProfileStatus> {
    state = {
@@ -56,6 +56,10 @@ export const ProfileStatus = ({profileStatus, updateStatusProfile}: ProfileStatu
 
    const [status, setStatus] = React.useState<string>(profileStatus);
    const [editMode, setEditMode] = React.useState<boolean>(false);
+
+   /*useEffect(() => {
+      setStatus(profileStatus);
+   }, [profileStatus]);*/
 
    const onChangeStatus = (e: ChangeEvent<HTMLInputElement>) => {
       setStatus(e.currentTarget.value);
