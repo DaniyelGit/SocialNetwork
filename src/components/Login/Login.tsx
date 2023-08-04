@@ -7,8 +7,7 @@ import {logIn} from "../../redux/actionsCreator/actionsForAuth";
 import {AppStateType} from "../../redux/store/store";
 import {Navigate} from "react-router-dom";
 import s from '../../common/FormsControls/FormsControls.module.css';
-
-
+import {ConfigProps} from "redux-form/lib/reduxForm";
 
 
 const Login = (props: LoginPropsType) => {
@@ -57,11 +56,9 @@ const mapStateToProps = (state: AppStateType) => {
    }
 }
 
-const LoginReduxForm = reduxForm<FormDataType, IProps>({
-   form: 'login'
-})(LoginForm);
+const LoginReduxForm = reduxForm<FormDataType, IProps>({form: 'login'})(LoginForm);
 
-export default connect (mapStateToProps, {logIn})(Login);
+export default connect(mapStateToProps, {logIn})(Login);
 
 
 // types
